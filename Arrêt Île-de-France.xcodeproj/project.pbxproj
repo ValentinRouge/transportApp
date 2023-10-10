@@ -30,7 +30,7 @@
 		A7DAD1D32AD5BD5700ABC3B0 /* DataFrameRef.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DAD1D22AD5BD5700ABC3B0 /* DataFrameRef.swift */; };
 		A7DAD1D52AD5BD7400ABC3B0 /* DestinationDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DAD1D42AD5BD7400ABC3B0 /* DestinationDisplay.swift */; };
 		A7DAD1D72AD5BD8D00ABC3B0 /* StopPointName.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DAD1D62AD5BD8D00ABC3B0 /* StopPointName.swift */; };
-		A7DAD1D92AD5C2B600ABC3B0 /* app.env in Sources */ = {isa = PBXBuildFile; fileRef = A7DAD1D82AD5C2B600ABC3B0 /* app.env */; };
+		A7DAD1DD2AD5C78100ABC3B0 /* app.env.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DAD1DC2AD5C78100ABC3B0 /* app.env.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,7 +58,7 @@
 		A7DAD1D22AD5BD5700ABC3B0 /* DataFrameRef.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFrameRef.swift; sourceTree = "<group>"; };
 		A7DAD1D42AD5BD7400ABC3B0 /* DestinationDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationDisplay.swift; sourceTree = "<group>"; };
 		A7DAD1D62AD5BD8D00ABC3B0 /* StopPointName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopPointName.swift; sourceTree = "<group>"; };
-		A7DAD1D82AD5C2B600ABC3B0 /* app.env */ = {isa = PBXFileReference; lastKnownFileType = text; path = app.env; sourceTree = "<group>"; };
+		A7DAD1DC2AD5C78100ABC3B0 /* app.env.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = app.env.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,11 +92,11 @@
 			isa = PBXGroup;
 			children = (
 				A7DAD1A22AD5BA9F00ABC3B0 /* Arre_t_I_le_de_FranceApp.swift */,
+				A7DAD1DC2AD5C78100ABC3B0 /* app.env.swift */,
 				A7DAD1A42AD5BA9F00ABC3B0 /* ContentView.swift */,
 				A7DAD1B02AD5BAC700ABC3B0 /* DataModel */,
 				A7DAD1A62AD5BAA100ABC3B0 /* Assets.xcassets */,
 				A7DAD1A82AD5BAA100ABC3B0 /* Preview Content */,
-				A7DAD1D82AD5C2B600ABC3B0 /* app.env */,
 			);
 			path = "Arrêt Île-de-France";
 			sourceTree = "<group>";
@@ -219,7 +219,7 @@
 				A7DAD1D12AD5BD3500ABC3B0 /* TrainNumbers.swift in Sources */,
 				A7DAD1BD2AD5BBF300ABC3B0 /* MonitoringRef.swift in Sources */,
 				A7DAD1B72AD5BB8800ABC3B0 /* ServiceDelivery.swift in Sources */,
-				A7DAD1D92AD5C2B600ABC3B0 /* app.env in Sources */,
+				A7DAD1DD2AD5C78100ABC3B0 /* app.env.swift in Sources */,
 				A7DAD1C32AD5BC6700ABC3B0 /* OperatorRef.swift in Sources */,
 				A7DAD1BB2AD5BBE000ABC3B0 /* MonitoredStopVisit.swift in Sources */,
 				A7DAD1BF2AD5BC0D00ABC3B0 /* MonitoredVehicleJourney.swift in Sources */,
