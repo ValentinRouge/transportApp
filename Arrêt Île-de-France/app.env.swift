@@ -7,6 +7,6 @@
 
 import Foundation
 
-let PRI_API_KEY = "gazkjAtTyVPEWteG1sLGrvbTgZhNiXs4"
+let PRI_API_KEY22 = "gazkjAtTyVPEWteG1sLGrvbTgZhNiXs4"
 
 
