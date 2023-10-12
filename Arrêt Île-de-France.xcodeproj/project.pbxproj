@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A75DF0C92AD8810F00E031C9 /* ToComeAtBusStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75DF0C82AD8810F00E031C9 /* ToComeAtBusStop.swift */; };
 		A7DAD1A32AD5BA9F00ABC3B0 /* Arre_t_I_le_de_FranceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DAD1A22AD5BA9F00ABC3B0 /* Arre_t_I_le_de_FranceApp.swift */; };
 		A7DAD1A52AD5BA9F00ABC3B0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DAD1A42AD5BA9F00ABC3B0 /* ContentView.swift */; };
 		A7DAD1A72AD5BAA100ABC3B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7DAD1A62AD5BAA100ABC3B0 /* Assets.xcassets */; };
@@ -30,11 +31,13 @@
 		A7DAD1D32AD5BD5700ABC3B0 /* DataFrameRef.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DAD1D22AD5BD5700ABC3B0 /* DataFrameRef.swift */; };
 		A7DAD1D52AD5BD7400ABC3B0 /* DestinationDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DAD1D42AD5BD7400ABC3B0 /* DestinationDisplay.swift */; };
 		A7DAD1D72AD5BD8D00ABC3B0 /* StopPointName.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DAD1D62AD5BD8D00ABC3B0 /* StopPointName.swift */; };
-		A7DAD1DD2AD5C78100ABC3B0 /* app.env.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DAD1DC2AD5C78100ABC3B0 /* app.env.swift */; };
 		A7F9137D2AD84F1C007983E4 /* local.env.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F9137C2AD84F1C007983E4 /* local.env.swift */; };
+		A7F9137F2AD84FCB007983E4 /* NextPassageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F9137E2AD84FCB007983E4 /* NextPassageController.swift */; };
+		A7F913822AD854C9007983E4 /* ApiRequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F913812AD854C9007983E4 /* ApiRequestError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A75DF0C82AD8810F00E031C9 /* ToComeAtBusStop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToComeAtBusStop.swift; sourceTree = "<group>"; };
 		A7DAD19F2AD5BA9F00ABC3B0 /* Arrêt Île-de-France.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Arrêt Île-de-France.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7DAD1A22AD5BA9F00ABC3B0 /* Arre_t_I_le_de_FranceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arre_t_I_le_de_FranceApp.swift; sourceTree = "<group>"; };
 		A7DAD1A42AD5BA9F00ABC3B0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -59,8 +62,9 @@
 		A7DAD1D22AD5BD5700ABC3B0 /* DataFrameRef.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFrameRef.swift; sourceTree = "<group>"; };
 		A7DAD1D42AD5BD7400ABC3B0 /* DestinationDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationDisplay.swift; sourceTree = "<group>"; };
 		A7DAD1D62AD5BD8D00ABC3B0 /* StopPointName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopPointName.swift; sourceTree = "<group>"; };
-		A7DAD1DC2AD5C78100ABC3B0 /* app.env.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = app.env.swift; sourceTree = "<group>"; };
 		A7F9137C2AD84F1C007983E4 /* local.env.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = local.env.swift; sourceTree = "<group>"; };
+		A7F9137E2AD84FCB007983E4 /* NextPassageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextPassageController.swift; sourceTree = "<group>"; };
+		A7F913812AD854C9007983E4 /* ApiRequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequestError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +78,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A75DF0C72AD880EB00E031C9 /* ToComeAtBusStop */ = {
+			isa = PBXGroup;
+			children = (
+				A75DF0C82AD8810F00E031C9 /* ToComeAtBusStop.swift */,
+			);
+			path = ToComeAtBusStop;
+			sourceTree = "<group>";
+		};
+		A7B386F02AD8959100489300 /* LineReferencial */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LineReferencial;
+			sourceTree = "<group>";
+		};
 		A7DAD1962AD5BA9F00ABC3B0 = {
 			isa = PBXGroup;
 			children = (
@@ -94,8 +113,9 @@
 			isa = PBXGroup;
 			children = (
 				A7DAD1A22AD5BA9F00ABC3B0 /* Arre_t_I_le_de_FranceApp.swift */,
-				A7DAD1DC2AD5C78100ABC3B0 /* app.env.swift */,
 				A7F9137C2AD84F1C007983E4 /* local.env.swift */,
+				A7F9137E2AD84FCB007983E4 /* NextPassageController.swift */,
+				A7F913802AD854B5007983E4 /* Errors */,
 				A7DAD1A42AD5BA9F00ABC3B0 /* ContentView.swift */,
 				A7DAD1B02AD5BAC700ABC3B0 /* DataModel */,
 				A7DAD1A62AD5BAA100ABC3B0 /* Assets.xcassets */,
@@ -115,6 +135,8 @@
 		A7DAD1B02AD5BAC700ABC3B0 /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
+				A7B386F02AD8959100489300 /* LineReferencial */,
+				A75DF0C72AD880EB00E031C9 /* ToComeAtBusStop */,
 				A7DAD1B12AD5BAD800ABC3B0 /* NextPassage */,
 			);
 			path = DataModel;
@@ -144,6 +166,14 @@
 				A7DAD1D62AD5BD8D00ABC3B0 /* StopPointName.swift */,
 			);
 			path = NextPassage;
+			sourceTree = "<group>";
+		};
+		A7F913802AD854B5007983E4 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				A7F913812AD854C9007983E4 /* ApiRequestError.swift */,
+			);
+			path = Errors;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,20 +253,22 @@
 				A7DAD1D12AD5BD3500ABC3B0 /* TrainNumbers.swift in Sources */,
 				A7DAD1BD2AD5BBF300ABC3B0 /* MonitoringRef.swift in Sources */,
 				A7DAD1B72AD5BB8800ABC3B0 /* ServiceDelivery.swift in Sources */,
-				A7DAD1DD2AD5C78100ABC3B0 /* app.env.swift in Sources */,
 				A7DAD1C32AD5BC6700ABC3B0 /* OperatorRef.swift in Sources */,
 				A7DAD1BB2AD5BBE000ABC3B0 /* MonitoredStopVisit.swift in Sources */,
 				A7DAD1BF2AD5BC0D00ABC3B0 /* MonitoredVehicleJourney.swift in Sources */,
 				A7DAD1A52AD5BA9F00ABC3B0 /* ContentView.swift in Sources */,
 				A7DAD1B32AD5BB1400ABC3B0 /* NextPassage.swift in Sources */,
+				A7F9137F2AD84FCB007983E4 /* NextPassageController.swift in Sources */,
 				A7DAD1C92AD5BCB400ABC3B0 /* DirectionName.swift in Sources */,
 				A7DAD1D72AD5BD8D00ABC3B0 /* StopPointName.swift in Sources */,
 				A7DAD1A32AD5BA9F00ABC3B0 /* Arre_t_I_le_de_FranceApp.swift in Sources */,
 				A7DAD1D32AD5BD5700ABC3B0 /* DataFrameRef.swift in Sources */,
 				A7DAD1C72AD5BC8E00ABC3B0 /* DestinationName.swift in Sources */,
 				A7DAD1D52AD5BD7400ABC3B0 /* DestinationDisplay.swift in Sources */,
+				A75DF0C92AD8810F00E031C9 /* ToComeAtBusStop.swift in Sources */,
 				A7DAD1CB2AD5BCCF00ABC3B0 /* DestinationRef.swift in Sources */,
 				A7DAD1CD2AD5BCE900ABC3B0 /* JourneyNote.swift in Sources */,
+				A7F913822AD854C9007983E4 /* ApiRequestError.swift in Sources */,
 				A7DAD1CF2AD5BD0500ABC3B0 /* MonitoredCall.swift in Sources */,
 				A7DAD1B92AD5BBBE00ABC3B0 /* StopMonitoringDelivery.swift in Sources */,
 			);

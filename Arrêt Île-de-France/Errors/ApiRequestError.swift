@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+enum ApiRequestError:Error {
+    case nothingReturned
+    case invalidURL
+    case failDecoding
+    case httpError(URLResponse?)
+}
