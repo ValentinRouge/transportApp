@@ -12,11 +12,11 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 */
 
 import Foundation
-struct Json4Swift_Base : Codable {
-	let datasetid : String?
-	let recordid : String?
-	let fields : Fields?
-	let record_timestamp : String?
+struct Zone : Codable {
+	let datasetid : String
+	let recordid : String
+	let fields : ZoneFields
+	let record_timestamp : String
 
 	enum CodingKeys: String, CodingKey {
 
@@ -28,10 +28,10 @@ struct Json4Swift_Base : Codable {
 
 	init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
-		datasetid = try values.decodeIfPresent(String.self, forKey: .datasetid)
-		recordid = try values.decodeIfPresent(String.self, forKey: .recordid)
-		fields = try values.decodeIfPresent(Fields.self, forKey: .fields)
-		record_timestamp = try values.decodeIfPresent(String.self, forKey: .record_timestamp)
+		datasetid = try values.decode(String.self, forKey: .datasetid)
+		recordid = try values.decode(String.self, forKey: .recordid)
+		fields = try values.decode(ZoneFields.self, forKey: .fields)
+		record_timestamp = try values.decode(String.self, forKey: .record_timestamp)
 	}
 
 }

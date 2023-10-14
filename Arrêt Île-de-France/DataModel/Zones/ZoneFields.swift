@@ -12,18 +12,18 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 */
 
 import Foundation
-struct Fields : Codable {
-	let zdapostalregion : String?
-	let zdatype : String?
-	let zdaversion : String?
-	let zdayepsg2154 : Int?
-	let zdatown : String?
-	let zdacreated : String?
-	let zdcid : String?
-	let zdachanged : String?
-	let zdaname : String?
-	let zdaxepsg2154 : Int?
-	let zdaid : String?
+struct ZoneFields : Codable {
+	let zdapostalregion : String
+	let zdatype : String
+	let zdaversion : String
+	let zdayepsg2154 : Int
+	let zdatown : String
+	let zdacreated : String
+	let zdcid : String
+	let zdachanged : String
+    let zdaname : String
+	let zdaxepsg2154 : Int
+	let zdaid : String
 
 	enum CodingKeys: String, CodingKey {
 
@@ -42,17 +42,17 @@ struct Fields : Codable {
 
 	init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
-		zdapostalregion = try values.decodeIfPresent(String.self, forKey: .zdapostalregion)
-		zdatype = try values.decodeIfPresent(String.self, forKey: .zdatype)
-		zdaversion = try values.decodeIfPresent(String.self, forKey: .zdaversion)
-		zdayepsg2154 = try values.decodeIfPresent(Int.self, forKey: .zdayepsg2154)
-		zdatown = try values.decodeIfPresent(String.self, forKey: .zdatown)
-		zdacreated = try values.decodeIfPresent(String.self, forKey: .zdacreated)
-		zdcid = try values.decodeIfPresent(String.self, forKey: .zdcid)
-		zdachanged = try values.decodeIfPresent(String.self, forKey: .zdachanged)
-		zdaname = try values.decodeIfPresent(String.self, forKey: .zdaname)
-		zdaxepsg2154 = try values.decodeIfPresent(Int.self, forKey: .zdaxepsg2154)
-		zdaid = try values.decodeIfPresent(String.self, forKey: .zdaid)
+		zdapostalregion = try values.decode(String.self, forKey: .zdapostalregion)
+		zdatype = try values.decode(String.self, forKey: .zdatype)
+		zdaversion = try values.decode(String.self, forKey: .zdaversion)
+		zdayepsg2154 = try values.decode(Int.self, forKey: .zdayepsg2154)
+		zdatown = try values.decode(String.self, forKey: .zdatown)
+		zdacreated = try values.decode(String.self, forKey: .zdacreated)
+		zdcid = try values.decode(String.self, forKey: .zdcid)
+		zdachanged = try values.decode(String.self, forKey: .zdachanged)
+		zdaname = try values.decode(String.self, forKey: .zdaname)
+		zdaxepsg2154 = try values.decode(Int.self, forKey: .zdaxepsg2154)
+		zdaid = try values.decode(String.self, forKey: .zdaid)
 	}
 
 }

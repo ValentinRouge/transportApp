@@ -8,22 +8,40 @@
 import Foundation
 
 class NextPassageController {
-    static let endpoint = "https://prim.iledefrance-mobilites.fr/marketplace/stop-monitoring?MonitoringRef=STIF:StopPoint:Q:11413:"
+    static let instance = NextPassageController()
     
-    static func fetchNextPassage(nextPassageCompletionHandler: @escaping ([ToComeAtBusStop]?, Error?) -> Void) {
-        let decoder = JSONDecoder()
-
-        guard let url = URL(string: endpoint) else {
+    let endpoint = "https://prim.iledefrance-mobilites.fr/marketplace/stop-monitoring?MonitoringRef=STIF:StopPoint:Q:" // 43232: 52849
+    var allLines: [LineReferencial]
+    let decoder = JSONDecoder()
+    
+    private init(){
+        let data:Data? = LocalDataManager.instance.getTransportLineData()
+        
+        if let unvrappedData = data {
+            do {
+                allLines = try self.decoder.decode([LineReferencial].self, from: unvrappedData)
+            } catch {
+                allLines = []
+            }
+        } else {
+            allLines = []
+        }
+        
+    }
+    
+    func fetchNextPassage(StopID: String ,nextPassageCompletionHandler: @escaping ([ToComeAtBusStop]?, Error?) -> Void) {
+        let completeEndpoint = endpoint + StopID + ":"
+        
+        guard let url = URL(string: completeEndpoint) else {
             return nextPassageCompletionHandler(nil, ApiRequestError.invalidURL)
         }
         
         var request = URLRequest(url: url)
-        request.setValue("ULp2ncMDjirKGAKxymCtSyU93nX244Jn", forHTTPHeaderField: "apiKey")
+        request.setValue(EnvVariables.PRIM_API_KEY, forHTTPHeaderField: "apiKey")
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             
-            print(response!)
-            print(String(data: data!, encoding: .utf8)!)
+            //print(String(data: data!, encoding: .utf8)!)
 
             guard let testResponse = response as? HTTPURLResponse, testResponse.statusCode == 200 else {
                 return nextPassageCompletionHandler(nil, ApiRequestError.httpError(response))
@@ -35,21 +53,33 @@ class NextPassageController {
             
             
             do {
-                let dataJSON:NextPassage = try decoder.decode(NextPassage.self, from: unvrappedData)
-                nextPassageCompletionHandler(extratToCome(nextPassage: dataJSON), nil)
+                let dataJSON:NextPassage = try self.decoder.decode(NextPassage.self, from: unvrappedData)
+                nextPassageCompletionHandler(self.extratToCome(nextPassage: dataJSON), nil)
             } catch {
+                print(error)
                 nextPassageCompletionHandler(nil,ApiRequestError.failDecoding)
             }
         }.resume()
     }
     
-    static func extratToCome(nextPassage: NextPassage) -> [ToComeAtBusStop]{
+    func extratToCome(nextPassage: NextPassage) -> [ToComeAtBusStop]{
         var listOfIncoming:[ToComeAtBusStop] = []
         
         for stop in nextPassage.siri.serviceDelivery.stopMonitoringDelivery {
             if let visits = stop.monitoredStopVisit {
                 for visit in visits {
-                    listOfIncoming.append(ToComeAtBusStop(lineName: visit.monitoredVehicleJourney?.lineRef?.value, lineDirection: visit.monitoredVehicleJourney?.directionName?[0].value, destinationName: visit.monitoredVehicleJourney?.destinationName?[0].value, nextOnes: [calculateTimeInterval(comingTime: visit.monitoredVehicleJourney?.monitoredCall?.expectedArrivalTime)]))
+                    //print(visit)
+                    if let alreadyComing = checkIfAlreadyComing(visit: visit, listOfIncoming: listOfIncoming) {
+                        let incomingIndex = listOfIncoming.firstIndex(where: {$0 == alreadyComing})
+                        if let unwrappedIncominIndex = incomingIndex {
+                            listOfIncoming[unwrappedIncominIndex].nextOnes.append(calculateTimeInterval(comingTime: visit.monitoredVehicleJourney?.monitoredCall?.expectedArrivalTime))
+
+                        } else {
+                            listOfIncoming = addNewToListOfIncoming(visit: visit, listOfIncoming: listOfIncoming)
+                        }
+                    } else {
+                        listOfIncoming = addNewToListOfIncoming(visit: visit, listOfIncoming: listOfIncoming)
+                    }
                 }
             }
         }
@@ -58,7 +88,7 @@ class NextPassageController {
         
     }
     
-    static func calculateTimeInterval(comingTime: String?) -> Int? {
+    func calculateTimeInterval(comingTime: String?) -> Int? {
         let dateFormater = ISO8601DateFormatter()
         dateFormater.formatOptions = [.withFractionalSeconds, .withInternetDateTime]
         
@@ -66,7 +96,7 @@ class NextPassageController {
             return nil
         }
         
-        var date = dateFormater.date(from: unvrappedComingTime)
+        let date = dateFormater.date(from: unvrappedComingTime)
         
         if let unvrappedDate = date {
             let timeInterval = (unvrappedDate.timeIntervalSinceNow)
@@ -76,9 +106,53 @@ class NextPassageController {
         }
 
     }
+    
+    func getLineName(id:String?) -> String? {
+        guard var unwrappedID = id else {
+            return id
+        }
+        
+        let start = unwrappedID.index(unwrappedID.startIndex, offsetBy: 11)
+        let end = unwrappedID.index(unwrappedID.endIndex, offsetBy: -1)
+        let range = start..<end
 
+        unwrappedID = String(unwrappedID[range])
+        
+        print(unwrappedID)
+        let line = allLines.filter{$0.fields.id_line.contains(unwrappedID)}
+        print(line)
+        
+        if line.isEmpty || line.count > 1{
+            return id
+        } else {
+            return line[0].fields.name_line
+        }
+    }
     
+    func checkIfAlreadyComing(visit: MonitoredStopVisit, listOfIncoming: [ToComeAtBusStop]) -> ToComeAtBusStop? {
+        if listOfIncoming.count == 0{
+            return nil
+        }
+        
+        for incoming in listOfIncoming {
+            if (incoming.lineRef == visit.monitoredVehicleJourney?.lineRef?.value && incoming.lineDirection == visit.monitoredVehicleJourney?.directionName?[0].value && incoming.destinationName == visit.monitoredVehicleJourney?.destinationName?[0].value) {
+                return incoming
+            }
+        }
+        
+        return nil
+        
+    }
     
+    func addNewToListOfIncoming(visit: MonitoredStopVisit, listOfIncoming: [ToComeAtBusStop]) -> [ToComeAtBusStop]{
+        var incoming = listOfIncoming
+        incoming.append(ToComeAtBusStop(lineName: getLineName(id: visit.monitoredVehicleJourney?.lineRef?.value),
+                                              lineRef: visit.monitoredVehicleJourney?.lineRef?.value,
+                                              lineDirection: visit.monitoredVehicleJourney?.directionName?[0].value,
+                                              destinationName: visit.monitoredVehicleJourney?.destinationName?[0].value,
+                                              nextOnes: [calculateTimeInterval(comingTime: visit.monitoredVehicleJourney?.monitoredCall?.expectedArrivalTime)]))
+        
+        return incoming
+    }
     
 }
-

@@ -14,7 +14,7 @@ struct MonitoredVehicleJourney : Codable {
     let directionName : [DirectionName]?
     let destinationRef : DestinationRef?
     let destinationName : [DestinationName]?
-    let vehicleJourneyName : [String]?
+    let vehicleJourneyName : [VehicleJourneyName]?
     let journeyNote : [JourneyNote]?
     let monitoredCall : MonitoredCall?
     let trainNumbers : TrainNumbers?
@@ -41,7 +41,7 @@ struct MonitoredVehicleJourney : Codable {
         directionName = try values.decodeIfPresent([DirectionName].self, forKey: .directionName)
         destinationRef = try values.decodeIfPresent(DestinationRef.self, forKey: .destinationRef)
         destinationName = try values.decodeIfPresent([DestinationName].self, forKey: .destinationName)
-        vehicleJourneyName = try values.decodeIfPresent([String].self, forKey: .vehicleJourneyName)
+        vehicleJourneyName = try values.decodeIfPresent([VehicleJourneyName].self, forKey: .vehicleJourneyName)
         journeyNote = try values.decodeIfPresent([JourneyNote].self, forKey: .journeyNote)
         monitoredCall = try values.decodeIfPresent(MonitoredCall.self, forKey: .monitoredCall)
         trainNumbers = try values.decodeIfPresent(TrainNumbers.self, forKey: .trainNumbers)

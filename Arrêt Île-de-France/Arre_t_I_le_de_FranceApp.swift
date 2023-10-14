@@ -11,7 +11,7 @@ import SwiftUI
 struct Arre_t_I_le_de_FranceApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TabsView()
         }
     }
 }

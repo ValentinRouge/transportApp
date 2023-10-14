@@ -7,10 +7,11 @@
 
 import Foundation
 
-struct ToComeAtBusStop {
+struct ToComeAtBusStop: Equatable {
     let lineName : String?
+    let lineRef: String?
     let lineDirection: String?
     let destinationName: String?
-    let nextOnes : [Int?]
+    var nextOnes : [Int?]
 }
 
