@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct Arre_t_I_le_de_FranceApp: App {
+struct StopIDFApp: App {
     var body: some Scene {
         WindowGroup {
             TabsView()

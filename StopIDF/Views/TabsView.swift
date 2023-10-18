@@ -10,7 +10,7 @@ import SwiftUI
 struct TabsView: View {
     var body: some View {
         TabView{
-            ContentView(ZoneID: "43232")
+            OneStopDetailView(ZoneID: "43232",ZoneName: "Favoris")
                 .tabItem {
                     Label("Favoris", systemImage: "star")
                 }

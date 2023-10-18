@@ -20,8 +20,10 @@
 		A74234592AD9D81A0019FFE0 /* BusStopZones.json in Resources */ = {isa = PBXBuildFile; fileRef = A74234582AD9D81A0019FFE0 /* BusStopZones.json */; };
 		A742345B2AD9D8410019FFE0 /* ZoneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A742345A2AD9D8410019FFE0 /* ZoneController.swift */; };
 		A75DF0C92AD8810F00E031C9 /* ToComeAtBusStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75DF0C82AD8810F00E031C9 /* ToComeAtBusStop.swift */; };
-		A7DAD1A32AD5BA9F00ABC3B0 /* Arre_t_I_le_de_FranceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DAD1A22AD5BA9F00ABC3B0 /* Arre_t_I_le_de_FranceApp.swift */; };
-		A7DAD1A52AD5BA9F00ABC3B0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DAD1A42AD5BA9F00ABC3B0 /* ContentView.swift */; };
+		A7B67A562ADFEC1100C437EC /* WrappingHStack in Frameworks */ = {isa = PBXBuildFile; productRef = A7B67A552ADFEC1100C437EC /* WrappingHStack */; };
+		A7B67A582ADFF79400C437EC /* OneStopDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B67A572ADFF79400C437EC /* OneStopDetailView.swift */; };
+		A7B67A5B2ADFFCE000C437EC /* FlowStackLayout in Frameworks */ = {isa = PBXBuildFile; productRef = A7B67A5A2ADFFCE000C437EC /* FlowStackLayout */; };
+		A7DAD1A32AD5BA9F00ABC3B0 /* StopIDFApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DAD1A22AD5BA9F00ABC3B0 /* StopIDFApp.swift */; };
 		A7DAD1A72AD5BAA100ABC3B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7DAD1A62AD5BAA100ABC3B0 /* Assets.xcassets */; };
 		A7DAD1AA2AD5BAA100ABC3B0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7DAD1A92AD5BAA100ABC3B0 /* Preview Assets.xcassets */; };
 		A7DAD1B32AD5BB1400ABC3B0 /* NextPassage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DAD1B22AD5BB1400ABC3B0 /* NextPassage.swift */; };
@@ -62,9 +64,9 @@
 		A74234582AD9D81A0019FFE0 /* BusStopZones.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BusStopZones.json; sourceTree = "<group>"; };
 		A742345A2AD9D8410019FFE0 /* ZoneController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoneController.swift; sourceTree = "<group>"; };
 		A75DF0C82AD8810F00E031C9 /* ToComeAtBusStop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToComeAtBusStop.swift; sourceTree = "<group>"; };
-		A7DAD19F2AD5BA9F00ABC3B0 /* Arrêt Île-de-France.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Arrêt Île-de-France.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A7DAD1A22AD5BA9F00ABC3B0 /* Arre_t_I_le_de_FranceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arre_t_I_le_de_FranceApp.swift; sourceTree = "<group>"; };
-		A7DAD1A42AD5BA9F00ABC3B0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A7B67A572ADFF79400C437EC /* OneStopDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneStopDetailView.swift; sourceTree = "<group>"; };
+		A7DAD19F2AD5BA9F00ABC3B0 /* StopIDF.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StopIDF.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7DAD1A22AD5BA9F00ABC3B0 /* StopIDFApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopIDFApp.swift; sourceTree = "<group>"; };
 		A7DAD1A62AD5BAA100ABC3B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A7DAD1A92AD5BAA100ABC3B0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A7DAD1B22AD5BB1400ABC3B0 /* NextPassage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextPassage.swift; sourceTree = "<group>"; };
@@ -96,6 +98,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7B67A562ADFEC1100C437EC /* WrappingHStack in Frameworks */,
+				A7B67A5B2ADFFCE000C437EC /* FlowStackLayout in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,7 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				A742344E2AD9D4230019FFE0 /* TabsView.swift */,
-				A7DAD1A42AD5BA9F00ABC3B0 /* ContentView.swift */,
+				A7B67A572ADFF79400C437EC /* OneStopDetailView.swift */,
 				A74234512AD9D5CE0019FFE0 /* AllZoneView.swift */,
 			);
 			path = Views;
@@ -151,7 +155,7 @@
 		A7DAD1962AD5BA9F00ABC3B0 = {
 			isa = PBXGroup;
 			children = (
-				A7DAD1A12AD5BA9F00ABC3B0 /* Arrêt Île-de-France */,
+				A7DAD1A12AD5BA9F00ABC3B0 /* StopIDF */,
 				A7DAD1A02AD5BA9F00ABC3B0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -159,17 +163,17 @@
 		A7DAD1A02AD5BA9F00ABC3B0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A7DAD19F2AD5BA9F00ABC3B0 /* Arrêt Île-de-France.app */,
+				A7DAD19F2AD5BA9F00ABC3B0 /* StopIDF.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A7DAD1A12AD5BA9F00ABC3B0 /* Arrêt Île-de-France */ = {
+		A7DAD1A12AD5BA9F00ABC3B0 /* StopIDF */ = {
 			isa = PBXGroup;
 			children = (
 				A74234502AD9D42A0019FFE0 /* Views */,
 				A74234472AD999180019FFE0 /* Data */,
-				A7DAD1A22AD5BA9F00ABC3B0 /* Arre_t_I_le_de_FranceApp.swift */,
+				A7DAD1A22AD5BA9F00ABC3B0 /* StopIDFApp.swift */,
 				A7F9137C2AD84F1C007983E4 /* local.env.swift */,
 				A7F9137E2AD84FCB007983E4 /* NextPassageController.swift */,
 				A742345A2AD9D8410019FFE0 /* ZoneController.swift */,
@@ -179,7 +183,7 @@
 				A7DAD1A62AD5BAA100ABC3B0 /* Assets.xcassets */,
 				A7DAD1A82AD5BAA100ABC3B0 /* Preview Content */,
 			);
-			path = "Arrêt Île-de-France";
+			path = StopIDF;
 			sourceTree = "<group>";
 		};
 		A7DAD1A82AD5BAA100ABC3B0 /* Preview Content */ = {
@@ -239,9 +243,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A7DAD19E2AD5BA9F00ABC3B0 /* Arrêt Île-de-France */ = {
+		A7DAD19E2AD5BA9F00ABC3B0 /* StopIDF */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A7DAD1AD2AD5BAA100ABC3B0 /* Build configuration list for PBXNativeTarget "Arrêt Île-de-France" */;
+			buildConfigurationList = A7DAD1AD2AD5BAA100ABC3B0 /* Build configuration list for PBXNativeTarget "StopIDF" */;
 			buildPhases = (
 				A7DAD19B2AD5BA9F00ABC3B0 /* Sources */,
 				A7DAD19C2AD5BA9F00ABC3B0 /* Frameworks */,
@@ -251,9 +255,13 @@
 			);
 			dependencies = (
 			);
-			name = "Arrêt Île-de-France";
+			name = StopIDF;
+			packageProductDependencies = (
+				A7B67A552ADFEC1100C437EC /* WrappingHStack */,
+				A7B67A5A2ADFFCE000C437EC /* FlowStackLayout */,
+			);
 			productName = "Arrêt Île-de-France";
-			productReference = A7DAD19F2AD5BA9F00ABC3B0 /* Arrêt Île-de-France.app */;
+			productReference = A7DAD19F2AD5BA9F00ABC3B0 /* StopIDF.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -271,7 +279,7 @@
 					};
 				};
 			};
-			buildConfigurationList = A7DAD19A2AD5BA9F00ABC3B0 /* Build configuration list for PBXProject "Arrêt Île-de-France" */;
+			buildConfigurationList = A7DAD19A2AD5BA9F00ABC3B0 /* Build configuration list for PBXProject "StopIDF" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -280,11 +288,15 @@
 				Base,
 			);
 			mainGroup = A7DAD1962AD5BA9F00ABC3B0;
+			packageReferences = (
+				A7B67A542ADFEC1100C437EC /* XCRemoteSwiftPackageReference "WrappingHStack" */,
+				A7B67A592ADFFCE000C437EC /* XCRemoteSwiftPackageReference "FlowStackLayout" */,
+			);
 			productRefGroup = A7DAD1A02AD5BA9F00ABC3B0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A7DAD19E2AD5BA9F00ABC3B0 /* Arrêt Île-de-France */,
+				A7DAD19E2AD5BA9F00ABC3B0 /* StopIDF */,
 			);
 		};
 /* End PBXProject section */
@@ -312,6 +324,7 @@
 				A742344D2AD9C4720019FFE0 /* VehicleJourneyName.swift in Sources */,
 				A7DAD1C52AD5BC7900ABC3B0 /* FramedVehicleJourneyRef.swift in Sources */,
 				A7DAD1B52AD5BB6800ABC3B0 /* Siri.swift in Sources */,
+				A7B67A582ADFF79400C437EC /* OneStopDetailView.swift in Sources */,
 				A7F9137D2AD84F1C007983E4 /* local.env.swift in Sources */,
 				A74234442AD9979E0019FFE0 /* Picto.swift in Sources */,
 				A7DAD1C12AD5BC3D00ABC3B0 /* LineRef.swift in Sources */,
@@ -322,14 +335,13 @@
 				A7DAD1BB2AD5BBE000ABC3B0 /* MonitoredStopVisit.swift in Sources */,
 				A742344F2AD9D4230019FFE0 /* TabsView.swift in Sources */,
 				A7DAD1BF2AD5BC0D00ABC3B0 /* MonitoredVehicleJourney.swift in Sources */,
-				A7DAD1A52AD5BA9F00ABC3B0 /* ContentView.swift in Sources */,
 				A742345B2AD9D8410019FFE0 /* ZoneController.swift in Sources */,
 				A7DAD1B32AD5BB1400ABC3B0 /* NextPassage.swift in Sources */,
 				A742344B2AD99C6E0019FFE0 /* LocalDataManager.swift in Sources */,
 				A7F9137F2AD84FCB007983E4 /* NextPassageController.swift in Sources */,
 				A7DAD1C92AD5BCB400ABC3B0 /* DirectionName.swift in Sources */,
 				A7DAD1D72AD5BD8D00ABC3B0 /* StopPointName.swift in Sources */,
-				A7DAD1A32AD5BA9F00ABC3B0 /* Arre_t_I_le_de_FranceApp.swift in Sources */,
+				A7DAD1A32AD5BA9F00ABC3B0 /* StopIDFApp.swift in Sources */,
 				A7DAD1D32AD5BD5700ABC3B0 /* DataFrameRef.swift in Sources */,
 				A74234462AD9979E0019FFE0 /* Fields.swift in Sources */,
 				A7DAD1C72AD5BC8E00ABC3B0 /* DestinationName.swift in Sources */,
@@ -475,10 +487,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Arrêt Île-de-France/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"StopIDF/Preview Content\"";
 				DEVELOPMENT_TEAM = VJ7H6QD38D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = StopIDF;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -489,7 +502,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "fr.leverry.Arre-t-I-le-de-France";
+				PRODUCT_BUNDLE_IDENTIFIER = fr.leverry.StopIDF;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -504,10 +517,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Arrêt Île-de-France/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"StopIDF/Preview Content\"";
 				DEVELOPMENT_TEAM = VJ7H6QD38D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = StopIDF;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -518,7 +532,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "fr.leverry.Arre-t-I-le-de-France";
+				PRODUCT_BUNDLE_IDENTIFIER = fr.leverry.StopIDF;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -529,7 +543,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A7DAD19A2AD5BA9F00ABC3B0 /* Build configuration list for PBXProject "Arrêt Île-de-France" */ = {
+		A7DAD19A2AD5BA9F00ABC3B0 /* Build configuration list for PBXProject "StopIDF" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A7DAD1AB2AD5BAA100ABC3B0 /* Debug */,
@@ -538,7 +552,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A7DAD1AD2AD5BAA100ABC3B0 /* Build configuration list for PBXNativeTarget "Arrêt Île-de-France" */ = {
+		A7DAD1AD2AD5BAA100ABC3B0 /* Build configuration list for PBXNativeTarget "StopIDF" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A7DAD1AE2AD5BAA100ABC3B0 /* Debug */,
@@ -548,6 +562,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A7B67A542ADFEC1100C437EC /* XCRemoteSwiftPackageReference "WrappingHStack" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dkk/WrappingHStack";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.11;
+			};
+		};
+		A7B67A592ADFFCE000C437EC /* XCRemoteSwiftPackageReference "FlowStackLayout" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/smyshlaevalex/FlowStackLayout.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A7B67A552ADFEC1100C437EC /* WrappingHStack */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A7B67A542ADFEC1100C437EC /* XCRemoteSwiftPackageReference "WrappingHStack" */;
+			productName = WrappingHStack;
+		};
+		A7B67A5A2ADFFCE000C437EC /* FlowStackLayout */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A7B67A592ADFFCE000C437EC /* XCRemoteSwiftPackageReference "FlowStackLayout" */;
+			productName = FlowStackLayout;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A7DAD1972AD5BA9F00ABC3B0 /* Project object */;
 }

@@ -20,7 +20,7 @@ struct AllZoneView: View {
             List{
                 ForEach(searchResults, id: \.fields.zdaid){ zone in
                     NavigationLink{
-                        ContentView(ZoneID: zone.fields.zdaid)
+                        OneStopDetailView(ZoneID: zone.fields.zdaid,ZoneName: zone.fields.zdaname)
                     } label: {
                         Text("\(zone.fields.zdaname) - \(zone.fields.zdatown)")
                     }

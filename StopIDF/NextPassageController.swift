@@ -63,6 +63,7 @@ class NextPassageController {
     }
     
     func extratToCome(nextPassage: NextPassage) -> [ToComeAtBusStop]{
+        print(nextPassage)
         var listOfIncoming:[ToComeAtBusStop] = []
         
         for stop in nextPassage.siri.serviceDelivery.stopMonitoringDelivery {
@@ -72,7 +73,7 @@ class NextPassageController {
                     if let alreadyComing = checkIfAlreadyComing(visit: visit, listOfIncoming: listOfIncoming) {
                         let incomingIndex = listOfIncoming.firstIndex(where: {$0 == alreadyComing})
                         if let unwrappedIncominIndex = incomingIndex {
-                            listOfIncoming[unwrappedIncominIndex].nextOnes.append(calculateTimeInterval(comingTime: visit.monitoredVehicleJourney?.monitoredCall?.expectedArrivalTime))
+                            listOfIncoming[unwrappedIncominIndex].nextOnes.append(calculateTimeInterval(comingTime: getComingTime(visit: visit)))
 
                         } else {
                             listOfIncoming = addNewToListOfIncoming(visit: visit, listOfIncoming: listOfIncoming)
@@ -118,14 +119,18 @@ class NextPassageController {
 
         unwrappedID = String(unwrappedID[range])
         
-        print(unwrappedID)
+        //print(unwrappedID)
         let line = allLines.filter{$0.fields.id_line.contains(unwrappedID)}
-        print(line)
+        //print(line)
         
         if line.isEmpty || line.count > 1{
             return id
         } else {
-            return line[0].fields.name_line
+            if let lineName = line[0].fields.shortname_line {
+                return lineName
+            } else {
+                return line[0].fields.name_line
+            }
         }
     }
     
@@ -150,9 +155,17 @@ class NextPassageController {
                                               lineRef: visit.monitoredVehicleJourney?.lineRef?.value,
                                               lineDirection: visit.monitoredVehicleJourney?.directionName?[0].value,
                                               destinationName: visit.monitoredVehicleJourney?.destinationName?[0].value,
-                                              nextOnes: [calculateTimeInterval(comingTime: visit.monitoredVehicleJourney?.monitoredCall?.expectedArrivalTime)]))
+                                              nextOnes: [calculateTimeInterval(comingTime: getComingTime(visit: visit))]))
         
         return incoming
+    }
+    
+    func getComingTime(visit: MonitoredStopVisit) -> String?{
+        if let time = visit.monitoredVehicleJourney?.monitoredCall?.expectedArrivalTime {
+            return time
+        } else {
+            return visit.monitoredVehicleJourney?.monitoredCall?.expectedDepartureTime
+        }
     }
     
 }

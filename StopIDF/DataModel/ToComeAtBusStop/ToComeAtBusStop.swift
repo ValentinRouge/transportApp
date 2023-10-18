@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct ToComeAtBusStop: Equatable {
+struct ToComeAtBusStop: Equatable, Identifiable {
+    let id: UUID = UUID()
     let lineName : String?
     let lineRef: String?
     let lineDirection: String?

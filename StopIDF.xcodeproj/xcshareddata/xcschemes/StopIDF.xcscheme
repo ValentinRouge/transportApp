@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A7DAD19E2AD5BA9F00ABC3B0"
-               BuildableName = "Arre&#x302;t I&#x302;le-de-France.app"
-               BlueprintName = "Arre&#x302;t I&#x302;le-de-France"
-               ReferencedContainer = "container:Arre&#x302;t I&#x302;le-de-France.xcodeproj">
+               BuildableName = "StopIDF.app"
+               BlueprintName = "StopIDF"
+               ReferencedContainer = "container:StopIDF.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -44,9 +44,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A7DAD19E2AD5BA9F00ABC3B0"
-            BuildableName = "Arre&#x302;t I&#x302;le-de-France.app"
-            BlueprintName = "Arre&#x302;t I&#x302;le-de-France"
-            ReferencedContainer = "container:Arre&#x302;t I&#x302;le-de-France.xcodeproj">
+            BuildableName = "StopIDF.app"
+            BlueprintName = "StopIDF"
+            ReferencedContainer = "container:StopIDF.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <EnvironmentVariables>
@@ -63,16 +63,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A7DAD19E2AD5BA9F00ABC3B0"
-            BuildableName = "Arre&#x302;t I&#x302;le-de-France.app"
-            BlueprintName = "Arre&#x302;t I&#x302;le-de-France"
-            ReferencedContainer = "container:Arre&#x302;t I&#x302;le-de-France.xcodeproj">
+            BuildableName = "StopIDF.app"
+            BlueprintName = "StopIDF"
+            ReferencedContainer = "container:StopIDF.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
