@@ -142,8 +142,15 @@ class NextPassageController {
             return (id, nil)
         } else {
             let lineFields = line[0].fields
+            let lineMode:String?
+            
+            if lineFields.networkname == "Noctilien"{
+                lineMode = "Noctilien"
+            } else {
+                lineMode = lineFields.transportmode
+            }
                         
-            let lineInfosForPicto = LineInfosForPicto(lineMode: lineFields.transportmode, BGColor: lineFields.colourweb_hexa, FGColor: lineFields.textcolourweb_hexa)
+            let lineInfosForPicto = LineInfosForPicto(lineMode: lineMode, BGColor: lineFields.colourweb_hexa, FGColor: lineFields.textcolourweb_hexa)
             
             if let lineName = lineFields.shortname_line {
                 return (lineName, lineInfosForPicto)

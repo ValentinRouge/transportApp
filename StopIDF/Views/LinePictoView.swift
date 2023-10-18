@@ -28,22 +28,52 @@ struct LinePictoView: View {
         switch linePictoInfos.lineMode {
         case "rail", "tram", "cable", "metro":
             return AnyView(Image(lineName).resizable().scaledToFit().frame(width: 45*dividedFactor))
+        case "Noctilien":
+            return AnyView(
+                ZStack {
+                    
+                    RoundedRectangle(cornerRadius: 7.5*dividedFactor)
+                                .frame(width: 100*dividedFactor, height: 45*dividedFactor)
+                                .foregroundStyle(Color(hex: "0A0082"))
+                     
+                    Rectangle()
+                        .frame(width: 100*dividedFactor, height: 7.5*dividedFactor)
+                        .foregroundStyle(Color(hex: linePictoInfos.BGColor ?? "64B5E5"))
+                        .clipShape(
+                            .rect(
+                                topLeadingRadius: 0,
+                                bottomLeadingRadius: 7.5*dividedFactor,
+                                bottomTrailingRadius: 7.5*dividedFactor,
+                                topTrailingRadius: 0
+                            )
+                        )
+                        .offset(y: 18.75*dividedFactor)
+                     
+
+                }
+                    .overlay(content: {
+                        Text(lineName)
+                            .font(.custom("IDFVoyageur-Bold", size: 30*dividedFactor))
+                            .padding([.top],6*dividedFactor)
+                            .foregroundStyle(.white)
+                    })
+                )
         default:
             return AnyView(
-                RoundedRectangle(cornerRadius: 7.5*dividedFactor)
-                            .frame(width: 100*dividedFactor, height: 45*dividedFactor)
-                            .foregroundColor(Color(hex: linePictoInfos.BGColor ?? "64B5E5"))
-                            .overlay(content: {
-                                Text(lineName)
-                                    .font(.custom("IDFVoyageur-Bold", size: 30*dividedFactor))
-                                    .padding([.top],6*dividedFactor)
-                                    .foregroundColor(Color(hex: linePictoInfos.FGColor ?? "fff"))
-                            })
-            )
+                    RoundedRectangle(cornerRadius: 7.5*dividedFactor)
+                        .frame(width: 100*dividedFactor, height: 45*dividedFactor)
+                        .foregroundStyle(Color(hex: linePictoInfos.BGColor ?? "64B5E5"))
+                        .overlay(content: {
+                            Text(lineName)
+                                .font(.custom("IDFVoyageur-Bold", size: 30*dividedFactor))
+                                .padding([.top],6*dividedFactor)
+                                .foregroundStyle(Color(hex: linePictoInfos.FGColor ?? "fff"))
+                        })
+                )
         }
     }
 }
 
 #Preview {
-    LinePictoView(linePictoInfos: LineInfosForPicto(lineMode: "bus", BGColor: nil, FGColor: nil), lineName: "B")
+    LinePictoView(linePictoInfos: LineInfosForPicto(lineMode: "Noctilien", BGColor: nil, FGColor: nil), lineName: "B")
 }
