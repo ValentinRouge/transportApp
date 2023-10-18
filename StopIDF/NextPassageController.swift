@@ -101,9 +101,7 @@ class NextPassageController {
                 }
             }
         }
-        
         return listOfIncoming
-        
     }
     
     func calculateTimeInterval(comingTime: String?) -> Int? {
@@ -125,9 +123,9 @@ class NextPassageController {
 
     }
     
-    func getLineName(id:String?) -> String? {
+    func getLineNameAndPicto(id:String?) -> (String?, LineInfosForPicto?) {
         guard var unwrappedID = id else {
-            return id
+            return (id, nil)
         }
         
         let start = unwrappedID.index(unwrappedID.startIndex, offsetBy: 11)
@@ -141,12 +139,16 @@ class NextPassageController {
         //print(line)
         
         if line.isEmpty || line.count > 1{
-            return id
+            return (id, nil)
         } else {
-            if let lineName = line[0].fields.shortname_line {
-                return lineName
+            let lineFields = line[0].fields
+                        
+            let lineInfosForPicto = LineInfosForPicto(lineMode: lineFields.transportmode, BGColor: lineFields.colourweb_hexa, FGColor: lineFields.textcolourweb_hexa)
+            
+            if let lineName = lineFields.shortname_line {
+                return (lineName, lineInfosForPicto)
             } else {
-                return line[0].fields.name_line
+                return (lineFields.name_line, lineInfosForPicto)
             }
         }
     }
@@ -203,8 +205,12 @@ class NextPassageController {
         
         let lineDirection: LineDirectionDestinations = LineDirectionDestinations(lineDirection: visit.monitoredVehicleJourney?.directionName?[0].value, lineDestinationTime: [lineDestination])
         
-        return ToComeAtBusStop(lineName: getLineName(id: visit.monitoredVehicleJourney?.lineRef?.value),
-                               lineRef: visit.monitoredVehicleJourney?.lineRef?.value, lineDirections: [lineDirection])
+        let (lineName, linePicto) = getLineNameAndPicto(id: visit.monitoredVehicleJourney?.lineRef?.value)
+        
+        return ToComeAtBusStop(lineName: lineName,
+                               lineRef: visit.monitoredVehicleJourney?.lineRef?.value,
+                               LineInfosForPicto: linePicto,
+                               lineDirections: [lineDirection])
     }
     
     func addNewDirectionToLineIncoming(visit: MonitoredStopVisit) -> LineDirectionDestinations{

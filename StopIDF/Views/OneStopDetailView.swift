@@ -32,7 +32,7 @@ struct OneStopDetailView: View {
                     if passagesList.isEmpty {
                         Text("Aucun passage prévu...")
                     } else {
-                        VStack{
+                        VStack(alignment:.leading) {
                             ForEach(passagesList, id: \.id) { passage in
                                 getOneLineView(passage: passage)
                             }
@@ -77,11 +77,8 @@ struct OneStopDetailView: View {
     
     func getOneLineView(passage: ToComeAtBusStop) -> AnyView {
          
-        return AnyView(VStack(content: {
-            Text(passage.lineName ?? "Numéro iconnu")
-                .font(Font.title3.weight(.semibold))
-                .gridColumnAlignment(.trailing)
-            
+        return AnyView(VStack(alignment: .leading, content: {
+            LinePictoView(linePictoInfos: passage.LineInfosForPicto, lineName: passage.lineName ?? "Numéro inconnu")
             ForEach(passage.lineDirections) { direction in
                 getOneDirectionView(direction: direction)
             }
@@ -90,7 +87,7 @@ struct OneStopDetailView: View {
     
     func getOneDirectionView(direction: LineDirectionDestinations) -> AnyView {
         return AnyView(
-            VStack{
+            VStack(alignment: .leading){
                 Text(direction.lineDirection ?? "Direction inconnue")
                 Grid(alignment: .leading, horizontalSpacing: 8, verticalSpacing: 10, content: {
                    ForEach(direction.lineDestinationTime) { destination in
@@ -107,7 +104,11 @@ struct OneStopDetailView: View {
                 .fixedSize(horizontal: false, vertical: true)
             if !destination.nextOnes.isEmpty {
                 FlowStack(alignment: .leading, horizontalSpacing: 4, verticalSpacing: 4) {
-                    ForEach(destination.nextOnes, id: \.self){ temps in
+                    
+                    //On les trie au cas ou il y a tjr des cas chelou (j'ai pas réussi à le fair avant)
+                    let nextOnesSorted = destination.nextOnes.sorted(by: {$0 ?? .min < $1 ?? .min})
+                    
+                    ForEach(nextOnesSorted, id: \.self){ temps in
                         getOneTimeView(time: temps)
                     }
                     Spacer()
@@ -119,25 +120,8 @@ struct OneStopDetailView: View {
         })
     }
     
-    func getOneTimeView(time: Int?) -> AnyView {
-        var tousTemps: String
-        if let realTime = time {
-            if realTime <= 0 {
-                tousTemps = "<1 min"
-            } else {
-                tousTemps = "\(realTime) min"
-            }
-        } else {
-            tousTemps = "NA"
-        }
-        
-        return AnyView(Text(tousTemps)
-            .padding([.horizontal], 5)
-            .padding([.vertical], 2)
-            .foregroundStyle(Color.white)
-            .background(Color(.green))
-            .clipShape(RoundedRectangle(cornerSize: /*@START_MENU_TOKEN@*/CGSize(width: 20, height: 10)/*@END_MENU_TOKEN@*/, style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/))
-        )
+    func getOneTimeView(time: Int?) -> OneTimeView {
+        return OneTimeView(time: time)
     }
 }
 

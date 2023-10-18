@@ -11,6 +11,7 @@ struct ToComeAtBusStop: Equatable, Identifiable {
     let id: UUID = UUID()
     let lineName : String?
     let lineRef: String?
+    let LineInfosForPicto: LineInfosForPicto?
     
     var lineDirections : [LineDirectionDestinations]
 }
