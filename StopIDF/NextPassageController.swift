@@ -70,16 +70,33 @@ class NextPassageController {
             if let visits = stop.monitoredStopVisit {
                 for visit in visits {
                     //print(visit)
-                    if let alreadyComing = checkIfAlreadyComing(visit: visit, listOfIncoming: listOfIncoming) {
-                        let incomingIndex = listOfIncoming.firstIndex(where: {$0 == alreadyComing})
-                        if let unwrappedIncominIndex = incomingIndex {
-                            listOfIncoming[unwrappedIncominIndex].nextOnes.append(calculateTimeInterval(comingTime: getComingTime(visit: visit)))
-
+                    if let lineAlreadyComing = checkIfLineAlreadyComing(visit: visit, listOfIncoming: listOfIncoming) {
+                        let lineIncomingIndex = listOfIncoming.firstIndex(where: {$0 == lineAlreadyComing})
+                        if let unwrappedLineIncomingIndex = lineIncomingIndex {
+                        // la je sais que le bus viens je vais chercher si le sens est déjà là
+                            if let directionAlreadyComing = checkIfDirectionAlreadyComing(visit: visit, listOfIncoming: listOfIncoming[unwrappedLineIncomingIndex].lineDirections) {
+                                let lineDirectionIndex = listOfIncoming[unwrappedLineIncomingIndex].lineDirections.firstIndex(where: {$0 == directionAlreadyComing})
+                                if let unwrappedLineDirectionIndex = lineDirectionIndex{
+                                    if let destinationAlreadyComing = checkIfDestinationAlreadyComing(visit: visit, listOfIncoming: listOfIncoming[unwrappedLineIncomingIndex].lineDirections[unwrappedLineDirectionIndex].lineDestinationTime) {
+                                        let lineDestinationIndex = listOfIncoming[unwrappedLineIncomingIndex].lineDirections[unwrappedLineDirectionIndex].lineDestinationTime.firstIndex(where: {$0 == destinationAlreadyComing})
+                                        if let unwrappedLineDestinationIndex = lineDestinationIndex{
+                                            listOfIncoming[unwrappedLineIncomingIndex].lineDirections[unwrappedLineDirectionIndex].lineDestinationTime[unwrappedLineDestinationIndex].nextOnes.append(calculateTimeInterval(comingTime: getComingTime(visit: visit)))
+                                        } else {
+                                            listOfIncoming[unwrappedLineIncomingIndex].lineDirections[unwrappedLineDirectionIndex].lineDestinationTime.append(addNewDestinationToDirectionIncoming(visit: visit))                                        }
+                                    } else {
+                                        listOfIncoming[unwrappedLineIncomingIndex].lineDirections[unwrappedLineDirectionIndex].lineDestinationTime.append(addNewDestinationToDirectionIncoming(visit: visit))
+                                    }
+                                } else {
+                                    listOfIncoming[unwrappedLineIncomingIndex].lineDirections.append(addNewDirectionToLineIncoming(visit: visit))
+                                }
+                            } else {
+                                listOfIncoming[unwrappedLineIncomingIndex].lineDirections.append(addNewDirectionToLineIncoming(visit: visit))
+                            }
                         } else {
-                            listOfIncoming = addNewToListOfIncoming(visit: visit, listOfIncoming: listOfIncoming)
+                            listOfIncoming.append(addNewLineToListOfIncoming(visit: visit))
                         }
                     } else {
-                        listOfIncoming = addNewToListOfIncoming(visit: visit, listOfIncoming: listOfIncoming)
+                        listOfIncoming.append(addNewLineToListOfIncoming(visit: visit))
                     }
                 }
             }
@@ -134,13 +151,13 @@ class NextPassageController {
         }
     }
     
-    func checkIfAlreadyComing(visit: MonitoredStopVisit, listOfIncoming: [ToComeAtBusStop]) -> ToComeAtBusStop? {
+    func checkIfLineAlreadyComing(visit: MonitoredStopVisit, listOfIncoming: [ToComeAtBusStop]) -> ToComeAtBusStop? {
         if listOfIncoming.count == 0{
             return nil
         }
         
         for incoming in listOfIncoming {
-            if (incoming.lineRef == visit.monitoredVehicleJourney?.lineRef?.value && incoming.lineDirection == visit.monitoredVehicleJourney?.directionName?[0].value && incoming.destinationName == visit.monitoredVehicleJourney?.destinationName?[0].value) {
+            if (incoming.lineRef == visit.monitoredVehicleJourney?.lineRef?.value) {
                 return incoming
             }
         }
@@ -149,15 +166,57 @@ class NextPassageController {
         
     }
     
-    func addNewToListOfIncoming(visit: MonitoredStopVisit, listOfIncoming: [ToComeAtBusStop]) -> [ToComeAtBusStop]{
-        var incoming = listOfIncoming
-        incoming.append(ToComeAtBusStop(lineName: getLineName(id: visit.monitoredVehicleJourney?.lineRef?.value),
-                                              lineRef: visit.monitoredVehicleJourney?.lineRef?.value,
-                                              lineDirection: visit.monitoredVehicleJourney?.directionName?[0].value,
-                                              destinationName: visit.monitoredVehicleJourney?.destinationName?[0].value,
-                                              nextOnes: [calculateTimeInterval(comingTime: getComingTime(visit: visit))]))
+    
+    func checkIfDirectionAlreadyComing(visit: MonitoredStopVisit, listOfIncoming: [LineDirectionDestinations]) -> LineDirectionDestinations? {
+        if listOfIncoming.count == 0{
+            return nil
+        }
         
-        return incoming
+        for incoming in listOfIncoming {
+            if (incoming.lineDirection == visit.monitoredVehicleJourney?.directionName?[0].value) {
+                return incoming
+            }
+        }
+        
+        return nil
+        
+    }
+    
+    func checkIfDestinationAlreadyComing(visit: MonitoredStopVisit, listOfIncoming: [LineDestinationToCome]) -> LineDestinationToCome? {
+        if listOfIncoming.count == 0{
+            return nil
+        }
+        
+        for incoming in listOfIncoming {
+            if (incoming.destinationName == visit.monitoredVehicleJourney?.destinationName?[0].value) {
+                return incoming
+            }
+        }
+        
+        return nil
+        
+    }
+    
+    func addNewLineToListOfIncoming(visit: MonitoredStopVisit) -> ToComeAtBusStop{
+        let lineDestination: LineDestinationToCome = LineDestinationToCome(destinationName: visit.monitoredVehicleJourney?.destinationName?[0].value,
+                                                                           nextOnes: [calculateTimeInterval(comingTime: getComingTime(visit: visit))])
+        
+        let lineDirection: LineDirectionDestinations = LineDirectionDestinations(lineDirection: visit.monitoredVehicleJourney?.directionName?[0].value, lineDestinationTime: [lineDestination])
+        
+        return ToComeAtBusStop(lineName: getLineName(id: visit.monitoredVehicleJourney?.lineRef?.value),
+                               lineRef: visit.monitoredVehicleJourney?.lineRef?.value, lineDirections: [lineDirection])
+    }
+    
+    func addNewDirectionToLineIncoming(visit: MonitoredStopVisit) -> LineDirectionDestinations{
+        let lineDestination: LineDestinationToCome = LineDestinationToCome(destinationName: visit.monitoredVehicleJourney?.destinationName?[0].value,
+                                                                           nextOnes: [calculateTimeInterval(comingTime: getComingTime(visit: visit))])
+        
+        return LineDirectionDestinations(lineDirection: visit.monitoredVehicleJourney?.directionName?[0].value, lineDestinationTime: [lineDestination])
+    }
+    
+    func addNewDestinationToDirectionIncoming(visit: MonitoredStopVisit) -> LineDestinationToCome{
+        return LineDestinationToCome(destinationName: visit.monitoredVehicleJourney?.destinationName?[0].value,
+                                                             nextOnes: [calculateTimeInterval(comingTime: getComingTime(visit: visit))])
     }
     
     func getComingTime(visit: MonitoredStopVisit) -> String?{

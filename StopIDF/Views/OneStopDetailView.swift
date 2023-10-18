@@ -10,7 +10,6 @@ import WrappingHStack
 import FlowStackLayout
 
 struct OneStopDetailView: View {
-    @State var nextPassage:String = "Hello world"
     @State var buttonEnabled = true
     @State var passagesList: [ToComeAtBusStop] = []
     let ZoneID: String
@@ -22,36 +21,37 @@ struct OneStopDetailView: View {
     }
     
     var body: some View {
-        VStack {
-            VStack(alignment: .leading, spacing: 5, content: {
-                Text(ZoneName)
-                    .font(.title)
-                Divider()
-                    .frame(height: 0)
-                
-                if passagesList.isEmpty {
-                    Text("Aucun passage prévu...")
-                } else {
-
-                    Grid(alignment: .leading, horizontalSpacing: 8, verticalSpacing: 5, content: {
-                        ForEach(passagesList, id: \.id) { passage in
-                            getOnePassageView(passage: passage)
+        ScrollView {
+            VStack {
+                VStack(alignment: .leading, spacing: 5, content: {
+                    Text(ZoneName)
+                        .font(.title)
+                    Divider()
+                        .frame(height: 0)
+                    
+                    if passagesList.isEmpty {
+                        Text("Aucun passage prévu...")
+                    } else {
+                        VStack{
+                            ForEach(passagesList, id: \.id) { passage in
+                                getOneLineView(passage: passage)
+                            }
                         }
-                    })
-                }
-            })
-            .padding([.all], 10)
-            .background(Color(UIColor.secondarySystemBackground))
-            .clipShape(
-                RoundedRectangle(cornerRadius: 16)
-            )
-            .onAppear(perform: {
-                updateNextPassages()
-            })
-            
-            Button("Actualiser", action: updateNextPassages)
-                .buttonStyle(.borderedProminent)
-                .disabled(!buttonEnabled)
+                    }
+                })
+                .padding([.all], 10)
+                .background(Color(UIColor.secondarySystemBackground))
+                .clipShape(
+                    RoundedRectangle(cornerRadius: 16)
+                )
+                .onAppear(perform: {
+                    updateNextPassages()
+                })
+                
+                Button("Actualiser", action: updateNextPassages)
+                    .buttonStyle(.borderedProminent)
+                    .disabled(!buttonEnabled)
+            }
         }
 
     }
@@ -61,7 +61,7 @@ struct OneStopDetailView: View {
             if let nextPassages = displayInfoNextPassage {
                 self.passagesList = nextPassages
             } else {
-                self.nextPassage = "Erreur"
+                self.passagesList = []
                 print(error!)
             }
         })
@@ -75,17 +75,39 @@ struct OneStopDetailView: View {
         buttonEnabled.toggle()
     }
     
-    func getOnePassageView(passage: ToComeAtBusStop) -> AnyView {
+    func getOneLineView(passage: ToComeAtBusStop) -> AnyView {
          
-        return AnyView(GridRow(content: {
+        return AnyView(VStack(content: {
             Text(passage.lineName ?? "Numéro iconnu")
                 .font(Font.title3.weight(.semibold))
                 .gridColumnAlignment(.trailing)
-            Text(passage.destinationName ?? "direction inconnue")
+            
+            ForEach(passage.lineDirections) { direction in
+                getOneDirectionView(direction: direction)
+            }
+        }))
+    }
+    
+    func getOneDirectionView(direction: LineDirectionDestinations) -> AnyView {
+        return AnyView(
+            VStack{
+                Text(direction.lineDirection ?? "Direction inconnue")
+                Grid(alignment: .leading, horizontalSpacing: 8, verticalSpacing: 10, content: {
+                   ForEach(direction.lineDestinationTime) { destination in
+                       getOneDestinationView(destination: destination)
+                   }
+                })
+            }
+        )
+    }
+    
+    func getOneDestinationView(destination: LineDestinationToCome) -> AnyView {
+        return AnyView(GridRow {
+            Text(destination.destinationName ?? "direction inconnue")
                 .fixedSize(horizontal: false, vertical: true)
-            if !passage.nextOnes.isEmpty {
+            if !destination.nextOnes.isEmpty {
                 FlowStack(alignment: .leading, horizontalSpacing: 4, verticalSpacing: 4) {
-                    ForEach(passage.nextOnes, id: \.self){ temps in
+                    ForEach(destination.nextOnes, id: \.self){ temps in
                         getOneTimeView(time: temps)
                     }
                     Spacer()
@@ -94,7 +116,7 @@ struct OneStopDetailView: View {
             } else {
                 Text("Aucun passage prévu...")
             }
-        }))
+        })
     }
     
     func getOneTimeView(time: Int?) -> AnyView {

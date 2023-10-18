@@ -23,6 +23,8 @@
 		A7B67A562ADFEC1100C437EC /* WrappingHStack in Frameworks */ = {isa = PBXBuildFile; productRef = A7B67A552ADFEC1100C437EC /* WrappingHStack */; };
 		A7B67A582ADFF79400C437EC /* OneStopDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B67A572ADFF79400C437EC /* OneStopDetailView.swift */; };
 		A7B67A5B2ADFFCE000C437EC /* FlowStackLayout in Frameworks */ = {isa = PBXBuildFile; productRef = A7B67A5A2ADFFCE000C437EC /* FlowStackLayout */; };
+		A7B67A5D2AE019F300C437EC /* LineDirectionDestinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B67A5C2AE019F300C437EC /* LineDirectionDestinations.swift */; };
+		A7B67A5F2AE01A5C00C437EC /* LineDestinationToCome.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B67A5E2AE01A5C00C437EC /* LineDestinationToCome.swift */; };
 		A7DAD1A32AD5BA9F00ABC3B0 /* StopIDFApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DAD1A22AD5BA9F00ABC3B0 /* StopIDFApp.swift */; };
 		A7DAD1A72AD5BAA100ABC3B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7DAD1A62AD5BAA100ABC3B0 /* Assets.xcassets */; };
 		A7DAD1AA2AD5BAA100ABC3B0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7DAD1A92AD5BAA100ABC3B0 /* Preview Assets.xcassets */; };
@@ -65,6 +67,8 @@
 		A742345A2AD9D8410019FFE0 /* ZoneController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoneController.swift; sourceTree = "<group>"; };
 		A75DF0C82AD8810F00E031C9 /* ToComeAtBusStop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToComeAtBusStop.swift; sourceTree = "<group>"; };
 		A7B67A572ADFF79400C437EC /* OneStopDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneStopDetailView.swift; sourceTree = "<group>"; };
+		A7B67A5C2AE019F300C437EC /* LineDirectionDestinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineDirectionDestinations.swift; sourceTree = "<group>"; };
+		A7B67A5E2AE01A5C00C437EC /* LineDestinationToCome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineDestinationToCome.swift; sourceTree = "<group>"; };
 		A7DAD19F2AD5BA9F00ABC3B0 /* StopIDF.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StopIDF.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7DAD1A22AD5BA9F00ABC3B0 /* StopIDFApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopIDFApp.swift; sourceTree = "<group>"; };
 		A7DAD1A62AD5BAA100ABC3B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -138,6 +142,8 @@
 			isa = PBXGroup;
 			children = (
 				A75DF0C82AD8810F00E031C9 /* ToComeAtBusStop.swift */,
+				A7B67A5C2AE019F300C437EC /* LineDirectionDestinations.swift */,
+				A7B67A5E2AE01A5C00C437EC /* LineDestinationToCome.swift */,
 			);
 			path = ToComeAtBusStop;
 			sourceTree = "<group>";
@@ -340,7 +346,9 @@
 				A742344B2AD99C6E0019FFE0 /* LocalDataManager.swift in Sources */,
 				A7F9137F2AD84FCB007983E4 /* NextPassageController.swift in Sources */,
 				A7DAD1C92AD5BCB400ABC3B0 /* DirectionName.swift in Sources */,
+				A7B67A5D2AE019F300C437EC /* LineDirectionDestinations.swift in Sources */,
 				A7DAD1D72AD5BD8D00ABC3B0 /* StopPointName.swift in Sources */,
+				A7B67A5F2AE01A5C00C437EC /* LineDestinationToCome.swift in Sources */,
 				A7DAD1A32AD5BA9F00ABC3B0 /* StopIDFApp.swift in Sources */,
 				A7DAD1D32AD5BD5700ABC3B0 /* DataFrameRef.swift in Sources */,
 				A74234462AD9979E0019FFE0 /* Fields.swift in Sources */,
