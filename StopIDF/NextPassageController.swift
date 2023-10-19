@@ -13,6 +13,7 @@ class NextPassageController {
     let endpoint = "https://prim.iledefrance-mobilites.fr/marketplace/stop-monitoring?MonitoringRef=STIF:StopPoint:Q:" // 43232: 52849
     var allLines: [LineReferencial]
     let decoder = JSONDecoder()
+    var StopID: String = ""
     
     private init(){
         let data:Data? = LocalDataManager.instance.getTransportLineData()
@@ -29,7 +30,8 @@ class NextPassageController {
         
     }
     
-    func fetchNextPassage(StopID: String ,nextPassageCompletionHandler: @escaping ([ToComeAtBusStop]?, Error?) -> Void) {
+    func fetchNextPassage(StopID: String ,nextPassageCompletionHandler: @escaping ([ToComeAtBusStop]?, ApiRequestError?) -> Void) {
+        self.StopID = StopID
         let completeEndpoint = endpoint + StopID + ":"
         
         guard let url = URL(string: completeEndpoint) else {
@@ -51,6 +53,7 @@ class NextPassageController {
                 return nextPassageCompletionHandler(nil, ApiRequestError.nothingReturned)
             }
             
+            //print(String(data: unvrappedData, encoding: .utf8)!)
             
             do {
                 let dataJSON:NextPassage = try self.decoder.decode(NextPassage.self, from: unvrappedData)
@@ -62,13 +65,29 @@ class NextPassageController {
         }.resume()
     }
     
+    //fonction qui supprime les trains passés et les trains dont la destination est l'arrêt ou ils sont observés
+    func hasToDeal(DestinationName: String?, MonitoredName: String?, expectedDeparture: String?) -> Bool{
+        if DestinationName == MonitoredName || convertStringToDate(dateString: expectedDeparture)?.timeIntervalSinceNow ?? 0 < -20{
+            return true
+        } else {
+            return false
+        }
+    }
+    
     func extratToCome(nextPassage: NextPassage) -> [ToComeAtBusStop]{
-        print(nextPassage)
+        //print(nextPassage)
         var listOfIncoming:[ToComeAtBusStop] = []
-        
         for stop in nextPassage.siri.serviceDelivery.stopMonitoringDelivery {
+                        
             if let visits = stop.monitoredStopVisit {
                 for visit in visits {
+                    
+                    if hasToDeal(DestinationName: visit.monitoredVehicleJourney?.destinationName?[0].value, 
+                                 MonitoredName: visit.monitoredVehicleJourney?.monitoredCall?.stopPointName?[0].value,
+                                 expectedDeparture: visit.monitoredVehicleJourney?.monitoredCall?.expectedDepartureTime) {
+                        continue
+                    }
+                    
                     //print(visit)
                     if let lineAlreadyComing = checkIfLineAlreadyComing(visit: visit, listOfIncoming: listOfIncoming) {
                         let lineIncomingIndex = listOfIncoming.firstIndex(where: {$0 == lineAlreadyComing})
@@ -104,16 +123,21 @@ class NextPassageController {
         return listOfIncoming
     }
     
-    func calculateTimeInterval(comingTime: String?) -> Int? {
+    func convertStringToDate(dateString: String?) -> Date?{
         let dateFormater = ISO8601DateFormatter()
         dateFormater.formatOptions = [.withFractionalSeconds, .withInternetDateTime]
         
-        guard let unvrappedComingTime = comingTime else {
+        guard let unvrappedComingTime = dateString else {
             return nil
         }
         
-        let date = dateFormater.date(from: unvrappedComingTime)
+        return dateFormater.date(from: unvrappedComingTime)
+    }
+    
+    func calculateTimeInterval(comingTime: String?) -> Int? {
         
+        let date = convertStringToDate(dateString: comingTime)
+                
         if let unvrappedDate = date {
             let timeInterval = (unvrappedDate.timeIntervalSinceNow)
             return (Int(round((timeInterval)/60)))
@@ -181,9 +205,18 @@ class NextPassageController {
             return nil
         }
         
+        
+            
         for incoming in listOfIncoming {
-            if (incoming.lineDirection == visit.monitoredVehicleJourney?.directionName?[0].value) {
-                return incoming
+            // gestion de ceux qui ont pas de direction #TER
+            if !(visit.monitoredVehicleJourney?.directionName?.isEmpty ?? false) {
+                if (incoming.lineDirection == visit.monitoredVehicleJourney?.directionName?[0].value) {
+                    return incoming
+                }
+            } else {
+                if (incoming.lineDirection == visit.monitoredVehicleJourney?.destinationName?[0].value) {
+                    return incoming
+                }
             }
         }
         
@@ -207,10 +240,19 @@ class NextPassageController {
     }
     
     func addNewLineToListOfIncoming(visit: MonitoredStopVisit) -> ToComeAtBusStop{
+        //print(visit)
+        
         let lineDestination: LineDestinationToCome = LineDestinationToCome(destinationName: visit.monitoredVehicleJourney?.destinationName?[0].value,
                                                                            nextOnes: [calculateTimeInterval(comingTime: getComingTime(visit: visit))])
         
-        let lineDirection: LineDirectionDestinations = LineDirectionDestinations(lineDirection: visit.monitoredVehicleJourney?.directionName?[0].value, lineDestinationTime: [lineDestination])
+        let lineDirection: LineDirectionDestinations
+        //Gestion pour les TER qui ont pas de direction
+        if !(visit.monitoredVehicleJourney?.directionName?.isEmpty ?? false) {
+            lineDirection = LineDirectionDestinations(lineDirection: visit.monitoredVehicleJourney?.directionName?[0].value, lineDestinationTime: [lineDestination])
+        } else {
+            lineDirection = LineDirectionDestinations(lineDirection: lineDestination.destinationName, lineDestinationTime: [lineDestination])
+        }
+        
         
         let (lineName, linePicto) = getLineNameAndPicto(id: visit.monitoredVehicleJourney?.lineRef?.value)
         
@@ -224,7 +266,12 @@ class NextPassageController {
         let lineDestination: LineDestinationToCome = LineDestinationToCome(destinationName: visit.monitoredVehicleJourney?.destinationName?[0].value,
                                                                            nextOnes: [calculateTimeInterval(comingTime: getComingTime(visit: visit))])
         
-        return LineDirectionDestinations(lineDirection: visit.monitoredVehicleJourney?.directionName?[0].value, lineDestinationTime: [lineDestination])
+        //Gestion pour les TER qui ont pas de direction
+        if !(visit.monitoredVehicleJourney?.directionName?.isEmpty ?? false) {
+            return LineDirectionDestinations(lineDirection: visit.monitoredVehicleJourney?.directionName?[0].value, lineDestinationTime: [lineDestination])
+        } else {
+            return LineDirectionDestinations(lineDirection: lineDestination.destinationName, lineDestinationTime: [lineDestination])
+        }
     }
     
     func addNewDestinationToDirectionIncoming(visit: MonitoredStopVisit) -> LineDestinationToCome{

@@ -14,6 +14,7 @@ struct OneStopDetailView: View {
     @State var passagesList: [ToComeAtBusStop] = []
     let ZoneID: String
     let ZoneName: String
+    @State var APIerror: ApiRequestError?
     
     init(ZoneID: String, ZoneName: String) {
         self.ZoneID = ZoneID
@@ -30,7 +31,18 @@ struct OneStopDetailView: View {
                         .frame(height: 0)
                     
                     if passagesList.isEmpty {
-                        Text("Aucun passage prévu...")
+                        switch APIerror {
+                        case .failDecoding:
+                            Text("Erreur de décodage")
+                        case .invalidURL:
+                            Text("URL de requête invalide")
+                        case .httpError:
+                            Text("Erreur HTTP")
+                        case .nothingReturned:
+                            Text("Aucune réponse du serveur")
+                        default:
+                            Text("Aucun passage prévu...")
+                        }
                     } else {
                         VStack(alignment:.leading) {
                             ForEach(passagesList, id: \.id) { passage in
@@ -62,6 +74,7 @@ struct OneStopDetailView: View {
                 self.passagesList = nextPassages
             } else {
                 self.passagesList = []
+                APIerror = error
                 print(error!)
             }
         })
@@ -126,6 +139,6 @@ struct OneStopDetailView: View {
 }
 
 #Preview {
-    OneStopDetailView(ZoneID: "43414",ZoneName: "Général De Bollardière") //43232
+    OneStopDetailView(ZoneID: "43238",ZoneName: "Général De Bollardière") //43232 43414
 }
 

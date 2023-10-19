@@ -8,7 +8,7 @@
 import Foundation
 
 struct TrainNumbers : Codable {
-    let trainNumberRef : [String]?
+    let trainNumberRef : [TrainNumbersRef]?
 
     enum CodingKeys: String, CodingKey {
 
@@ -17,7 +17,7 @@ struct TrainNumbers : Codable {
 
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        trainNumberRef = try values.decodeIfPresent([String].self, forKey: .trainNumberRef)
+        trainNumberRef = try values.decodeIfPresent([TrainNumbersRef].self, forKey: .trainNumberRef)
     }
 
 }

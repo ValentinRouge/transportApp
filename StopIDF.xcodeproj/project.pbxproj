@@ -30,6 +30,7 @@
 		A7B67ACC2AE0759000C437EC /* LinePictoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B67ACB2AE0759000C437EC /* LinePictoView.swift */; };
 		A7B67ACE2AE0814A00C437EC /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B67ACD2AE0814A00C437EC /* ColorExtension.swift */; };
 		A7B67AD02AE0851100C437EC /* IDFVoyageur-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A7B67ACF2AE0851100C437EC /* IDFVoyageur-Bold.otf */; };
+		A7B67AD32AE1C8BB00C437EC /* TrainNumbersRef.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B67AD22AE1C8BB00C437EC /* TrainNumbersRef.swift */; };
 		A7DAD1A32AD5BA9F00ABC3B0 /* StopIDFApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DAD1A22AD5BA9F00ABC3B0 /* StopIDFApp.swift */; };
 		A7DAD1A72AD5BAA100ABC3B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7DAD1A62AD5BAA100ABC3B0 /* Assets.xcassets */; };
 		A7DAD1AA2AD5BAA100ABC3B0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7DAD1A92AD5BAA100ABC3B0 /* Preview Assets.xcassets */; };
@@ -80,6 +81,7 @@
 		A7B67ACD2AE0814A00C437EC /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		A7B67ACF2AE0851100C437EC /* IDFVoyageur-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IDFVoyageur-Bold.otf"; sourceTree = "<group>"; };
 		A7B67AD12AE0858500C437EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		A7B67AD22AE1C8BB00C437EC /* TrainNumbersRef.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainNumbersRef.swift; sourceTree = "<group>"; };
 		A7DAD19F2AD5BA9F00ABC3B0 /* StopIDF.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StopIDF.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7DAD1A22AD5BA9F00ABC3B0 /* StopIDFApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopIDFApp.swift; sourceTree = "<group>"; };
 		A7DAD1A62AD5BAA100ABC3B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 				A7DAD1CC2AD5BCE900ABC3B0 /* JourneyNote.swift */,
 				A7DAD1CE2AD5BD0500ABC3B0 /* MonitoredCall.swift */,
 				A7DAD1D02AD5BD3500ABC3B0 /* TrainNumbers.swift */,
+				A7B67AD22AE1C8BB00C437EC /* TrainNumbersRef.swift */,
 				A7DAD1D22AD5BD5700ABC3B0 /* DataFrameRef.swift */,
 				A7DAD1D42AD5BD7400ABC3B0 /* DestinationDisplay.swift */,
 				A7DAD1D62AD5BD8D00ABC3B0 /* StopPointName.swift */,
@@ -381,6 +384,7 @@
 				A74234522AD9D5CE0019FFE0 /* AllZoneView.swift in Sources */,
 				A7DAD1CB2AD5BCCF00ABC3B0 /* DestinationRef.swift in Sources */,
 				A74234572AD9D7720019FFE0 /* Zone.swift in Sources */,
+				A7B67AD32AE1C8BB00C437EC /* TrainNumbersRef.swift in Sources */,
 				A7DAD1CD2AD5BCE900ABC3B0 /* JourneyNote.swift in Sources */,
 				A7F913822AD854C9007983E4 /* ApiRequestError.swift in Sources */,
 				A7DAD1CF2AD5BD0500ABC3B0 /* MonitoredCall.swift in Sources */,
