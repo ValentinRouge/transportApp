@@ -23,6 +23,8 @@
 		A74D839E2AE2E7D9008BBEA9 /* LabeledDividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74D839D2AE2E7D9008BBEA9 /* LabeledDividerView.swift */; };
 		A74D83A02AE408AB008BBEA9 /* LineReferencialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74D839F2AE408AB008BBEA9 /* LineReferencialController.swift */; };
 		A74D83A32AE40B9F008BBEA9 /* TimeFormattingUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74D83A22AE40B9F008BBEA9 /* TimeFormattingUtils.swift */; };
+		A74D83A52AE4100C008BBEA9 /* OneDestinationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74D83A42AE4100C008BBEA9 /* OneDestinationView.swift */; };
+		A74D83A72AE41110008BBEA9 /* OneDirectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74D83A62AE41110008BBEA9 /* OneDirectionView.swift */; };
 		A75DF0C92AD8810F00E031C9 /* ToComeAtBusStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75DF0C82AD8810F00E031C9 /* ToComeAtBusStop.swift */; };
 		A7B67A562ADFEC1100C437EC /* WrappingHStack in Frameworks */ = {isa = PBXBuildFile; productRef = A7B67A552ADFEC1100C437EC /* WrappingHStack */; };
 		A7B67A582ADFF79400C437EC /* OneStopDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B67A572ADFF79400C437EC /* OneStopDetailView.swift */; };
@@ -79,6 +81,8 @@
 		A74D839D2AE2E7D9008BBEA9 /* LabeledDividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledDividerView.swift; sourceTree = "<group>"; };
 		A74D839F2AE408AB008BBEA9 /* LineReferencialController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineReferencialController.swift; sourceTree = "<group>"; };
 		A74D83A22AE40B9F008BBEA9 /* TimeFormattingUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFormattingUtils.swift; sourceTree = "<group>"; };
+		A74D83A42AE4100C008BBEA9 /* OneDestinationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneDestinationView.swift; sourceTree = "<group>"; };
+		A74D83A62AE41110008BBEA9 /* OneDirectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneDirectionView.swift; sourceTree = "<group>"; };
 		A75DF0C82AD8810F00E031C9 /* ToComeAtBusStop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToComeAtBusStop.swift; sourceTree = "<group>"; };
 		A7B67A572ADFF79400C437EC /* OneStopDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneStopDetailView.swift; sourceTree = "<group>"; };
 		A7B67A5C2AE019F300C437EC /* LineDirectionDestinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineDirectionDestinations.swift; sourceTree = "<group>"; };
@@ -146,6 +150,8 @@
 			children = (
 				A742344E2AD9D4230019FFE0 /* TabsView.swift */,
 				A7B67A572ADFF79400C437EC /* OneStopDetailView.swift */,
+				A74D83A42AE4100C008BBEA9 /* OneDestinationView.swift */,
+				A74D83A62AE41110008BBEA9 /* OneDirectionView.swift */,
 				A7B67A602AE0276100C437EC /* OneTimeView.swift */,
 				A74234512AD9D5CE0019FFE0 /* AllZoneView.swift */,
 				A7B67ACB2AE0759000C437EC /* LinePictoView.swift */,
@@ -375,6 +381,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A74D83A52AE4100C008BBEA9 /* OneDestinationView.swift in Sources */,
 				A7B67ACC2AE0759000C437EC /* LinePictoView.swift in Sources */,
 				A74234562AD9D7720019FFE0 /* ZoneFields.swift in Sources */,
 				A742344D2AD9C4720019FFE0 /* VehicleJourneyName.swift in Sources */,
@@ -389,6 +396,7 @@
 				A7DAD1B72AD5BB8800ABC3B0 /* ServiceDelivery.swift in Sources */,
 				A74D839C2AE2E49E008BBEA9 /* StringExtension.swift in Sources */,
 				A7DAD1C32AD5BC6700ABC3B0 /* OperatorRef.swift in Sources */,
+				A74D83A72AE41110008BBEA9 /* OneDirectionView.swift in Sources */,
 				A7DAD1BB2AD5BBE000ABC3B0 /* MonitoredStopVisit.swift in Sources */,
 				A742344F2AD9D4230019FFE0 /* TabsView.swift in Sources */,
 				A7DAD1BF2AD5BC0D00ABC3B0 /* MonitoredVehicleJourney.swift in Sources */,

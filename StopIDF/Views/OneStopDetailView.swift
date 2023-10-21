@@ -93,57 +93,11 @@ struct OneStopDetailView: View {
         return AnyView(VStack(alignment: .leading, content: {
             LinePictoView(linePictoInfos: passage.LineInfosForPicto, lineName: passage.lineName ?? "Numéro inconnu")
             ForEach(passage.lineDirections) { direction in
-                getOneDirectionView(direction: direction)
+                OneDirectionView(direction: direction)
             }
         }))
     }
     
-    
-    func getOneDirectionView(direction: LineDirectionDestinations) -> AnyView {
-        //print(direction)
-        
-        return AnyView(
-            VStack(alignment: .leading){
-                if !(direction.lineDestinationTime.count == 1 && direction.lineDestinationTime.first?.destinationName?.isEqualIgnoringCaseDiacriticsAndHyphen(direction.lineDirection ?? "") ?? false) {
-                    HStack {
-                        LabelledDividerView(label: direction.lineDirection ?? "Direction inconnue", horizontalPadding: 0)
-                    }
-                    
-                }
-                Grid(alignment: .leading, horizontalSpacing: 8, verticalSpacing: 10, content: {
-                   ForEach(direction.lineDestinationTime) { destination in
-                       getOneDestinationView(destination: destination)
-                   }
-                })
-            }
-        )
-    }
-    
-    func getOneDestinationView(destination: LineDestinationToCome) -> AnyView {
-        return AnyView(GridRow {
-            Text(destination.destinationName ?? "direction inconnue")
-                .fixedSize(horizontal: false, vertical: true)
-            if !destination.nextOnes.isEmpty {
-                FlowStack(alignment: .leading, horizontalSpacing: 4, verticalSpacing: 4) {
-                    
-                    //On les trie au cas ou il y a tjr des cas chelou (j'ai pas réussi à le fair avant)
-                    let nextOnesSorted = destination.nextOnes.sorted(by: {$0 ?? .min < $1 ?? .min})
-                    
-                    ForEach(nextOnesSorted, id: \.self){ temps in
-                        getOneTimeView(time: temps)
-                    }
-                    Spacer()
-                }
-                .fixedSize(horizontal: false, vertical: false)
-            } else {
-                Text("Aucun passage prévu...")
-            }
-        })
-    }
-    
-    func getOneTimeView(time: Int?) -> OneTimeView {
-        return OneTimeView(time: time)
-    }
 }
 
 #Preview {
