@@ -17,16 +17,16 @@ struct AllZoneView: View {
     
     var body: some View {
         NavigationStack {
-            List{
-                ForEach(searchResults, id: \.fields.zdaid){ zone in
-                    NavigationLink{
-                        OneStopDetailView(ZoneID: zone.fields.zdaid,ZoneName: zone.fields.zdaname)
-                    } label: {
-                        Text("\(zone.fields.zdaname) - \(zone.fields.zdatown)")
-                    }
+            List(searchResults, id: \.fields.zdaid){ zone in
+                NavigationLink {
+                    OneStopDetailView(ZoneID: zone.fields.zdaid,ZoneName: zone.fields.zdaname)
+                } label: {
+                    Text("\(zone.fields.zdaname) - \(zone.fields.zdatown)")
                 }
             }
-        }.searchable(text: $searchText)
+            .id(UUID())
+            .searchable(text: $searchText)
+        }
 
     }
     

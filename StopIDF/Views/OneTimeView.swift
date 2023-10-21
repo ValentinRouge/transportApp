@@ -16,7 +16,7 @@ struct OneTimeView: View {
             if unwrappedTime <= 0 {
                 self.time = "<1 min"
             } else {
-                self.time = "\(unwrappedTime) min"
+                self.time = TimeFormattingUtils.convertMinToHMin(time: unwrappedTime)
             }
         } else {
             self.time = "NA"
@@ -34,5 +34,5 @@ struct OneTimeView: View {
 }
 
 #Preview {
-    OneTimeView(time: 5)
+    OneTimeView(time: 90)
 }

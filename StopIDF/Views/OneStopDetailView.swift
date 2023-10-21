@@ -89,7 +89,7 @@ struct OneStopDetailView: View {
     }
     
     func getOneLineView(passage: ToComeAtBusStop) -> AnyView {
-         
+        print(passage)
         return AnyView(VStack(alignment: .leading, content: {
             LinePictoView(linePictoInfos: passage.LineInfosForPicto, lineName: passage.lineName ?? "Numéro inconnu")
             ForEach(passage.lineDirections) { direction in
@@ -98,10 +98,18 @@ struct OneStopDetailView: View {
         }))
     }
     
+    
     func getOneDirectionView(direction: LineDirectionDestinations) -> AnyView {
+        //print(direction)
+        
         return AnyView(
             VStack(alignment: .leading){
-                Text(direction.lineDirection ?? "Direction inconnue")
+                if !(direction.lineDestinationTime.count == 1 && direction.lineDestinationTime.first?.destinationName?.isEqualIgnoringCaseDiacriticsAndHyphen(direction.lineDirection ?? "") ?? false) {
+                    HStack {
+                        LabelledDividerView(label: direction.lineDirection ?? "Direction inconnue", horizontalPadding: 0)
+                    }
+                    
+                }
                 Grid(alignment: .leading, horizontalSpacing: 8, verticalSpacing: 10, content: {
                    ForEach(direction.lineDestinationTime) { destination in
                        getOneDestinationView(destination: destination)
@@ -139,6 +147,6 @@ struct OneStopDetailView: View {
 }
 
 #Preview {
-    OneStopDetailView(ZoneID: "43238",ZoneName: "Général De Bollardière") //43232 43414
+    OneStopDetailView(ZoneID: "43232",ZoneName: "Général De Bollardière") // 43414 43238
 }
 

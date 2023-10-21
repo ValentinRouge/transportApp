@@ -11,24 +11,8 @@ class NextPassageController {
     static let instance = NextPassageController()
     
     let endpoint = "https://prim.iledefrance-mobilites.fr/marketplace/stop-monitoring?MonitoringRef=STIF:StopPoint:Q:" // 43232: 52849
-    var allLines: [LineReferencial]
     let decoder = JSONDecoder()
     var StopID: String = ""
-    
-    private init(){
-        let data:Data? = LocalDataManager.instance.getTransportLineData()
-        
-        if let unvrappedData = data {
-            do {
-                allLines = try self.decoder.decode([LineReferencial].self, from: unvrappedData)
-            } catch {
-                allLines = []
-            }
-        } else {
-            allLines = []
-        }
-        
-    }
     
     func fetchNextPassage(StopID: String ,nextPassageCompletionHandler: @escaping ([ToComeAtBusStop]?, ApiRequestError?) -> Void) {
         self.StopID = StopID
@@ -66,8 +50,15 @@ class NextPassageController {
     }
     
     //fonction qui supprime les trains passés et les trains dont la destination est l'arrêt ou ils sont observés
-    func hasToDeal(DestinationName: String?, MonitoredName: String?, expectedDeparture: String?) -> Bool{
-        if DestinationName == MonitoredName || convertStringToDate(dateString: expectedDeparture)?.timeIntervalSinceNow ?? 0 < -20{
+    func hasToDeal(DestinationName: String?, 
+                   MonitoredName: String?,
+                   expectedDeparture: String?,
+                   DepartureStatus: String?,
+                   ExpectedArrivalTime: String?) -> Bool{
+        if (DestinationName == MonitoredName ||
+            convertStringToDate(dateString: expectedDeparture)?.timeIntervalSinceNow ?? 0 < -20 ||
+            DepartureStatus == "cancelled" ||
+            (ExpectedArrivalTime == nil && expectedDeparture == nil)) {
             return true
         } else {
             return false
@@ -84,7 +75,9 @@ class NextPassageController {
                     
                     if hasToDeal(DestinationName: visit.monitoredVehicleJourney?.destinationName?[0].value, 
                                  MonitoredName: visit.monitoredVehicleJourney?.monitoredCall?.stopPointName?[0].value,
-                                 expectedDeparture: visit.monitoredVehicleJourney?.monitoredCall?.expectedDepartureTime) {
+                                 expectedDeparture: visit.monitoredVehicleJourney?.monitoredCall?.expectedDepartureTime,
+                                 DepartureStatus: visit.monitoredVehicleJourney?.monitoredCall?.departureStatus,
+                                 ExpectedArrivalTime: visit.monitoredVehicleJourney?.monitoredCall?.expectedArrivalTime) {
                         continue
                     }
                     
@@ -147,43 +140,6 @@ class NextPassageController {
 
     }
     
-    func getLineNameAndPicto(id:String?) -> (String?, LineInfosForPicto?) {
-        guard var unwrappedID = id else {
-            return (id, nil)
-        }
-        
-        let start = unwrappedID.index(unwrappedID.startIndex, offsetBy: 11)
-        let end = unwrappedID.index(unwrappedID.endIndex, offsetBy: -1)
-        let range = start..<end
-
-        unwrappedID = String(unwrappedID[range])
-        
-        //print(unwrappedID)
-        let line = allLines.filter{$0.fields.id_line.contains(unwrappedID)}
-        //print(line)
-        
-        if line.isEmpty || line.count > 1{
-            return (id, nil)
-        } else {
-            let lineFields = line[0].fields
-            let lineMode:String?
-            
-            if lineFields.networkname == "Noctilien"{
-                lineMode = "Noctilien"
-            } else {
-                lineMode = lineFields.transportmode
-            }
-                        
-            let lineInfosForPicto = LineInfosForPicto(lineMode: lineMode, BGColor: lineFields.colourweb_hexa, FGColor: lineFields.textcolourweb_hexa)
-            
-            if let lineName = lineFields.shortname_line {
-                return (lineName, lineInfosForPicto)
-            } else {
-                return (lineFields.name_line, lineInfosForPicto)
-            }
-        }
-    }
-    
     func checkIfLineAlreadyComing(visit: MonitoredStopVisit, listOfIncoming: [ToComeAtBusStop]) -> ToComeAtBusStop? {
         if listOfIncoming.count == 0{
             return nil
@@ -199,14 +155,11 @@ class NextPassageController {
         
     }
     
-    
     func checkIfDirectionAlreadyComing(visit: MonitoredStopVisit, listOfIncoming: [LineDirectionDestinations]) -> LineDirectionDestinations? {
         if listOfIncoming.count == 0{
             return nil
         }
         
-        
-            
         for incoming in listOfIncoming {
             // gestion de ceux qui ont pas de direction #TER
             if !(visit.monitoredVehicleJourney?.directionName?.isEmpty ?? false) {
@@ -254,7 +207,7 @@ class NextPassageController {
         }
         
         
-        let (lineName, linePicto) = getLineNameAndPicto(id: visit.monitoredVehicleJourney?.lineRef?.value)
+        let (lineName, linePicto) = LineReferencialController.instance.getLineNameAndPicto(id: visit.monitoredVehicleJourney?.lineRef?.value)
         
         return ToComeAtBusStop(lineName: lineName,
                                lineRef: visit.monitoredVehicleJourney?.lineRef?.value,

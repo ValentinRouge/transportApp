@@ -19,6 +19,10 @@
 		A74234572AD9D7720019FFE0 /* Zone.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74234552AD9D7720019FFE0 /* Zone.swift */; };
 		A74234592AD9D81A0019FFE0 /* BusStopZones.json in Resources */ = {isa = PBXBuildFile; fileRef = A74234582AD9D81A0019FFE0 /* BusStopZones.json */; };
 		A742345B2AD9D8410019FFE0 /* ZoneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A742345A2AD9D8410019FFE0 /* ZoneController.swift */; };
+		A74D839C2AE2E49E008BBEA9 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74D839B2AE2E49E008BBEA9 /* StringExtension.swift */; };
+		A74D839E2AE2E7D9008BBEA9 /* LabeledDividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74D839D2AE2E7D9008BBEA9 /* LabeledDividerView.swift */; };
+		A74D83A02AE408AB008BBEA9 /* LineReferencialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74D839F2AE408AB008BBEA9 /* LineReferencialController.swift */; };
+		A74D83A32AE40B9F008BBEA9 /* TimeFormattingUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74D83A22AE40B9F008BBEA9 /* TimeFormattingUtils.swift */; };
 		A75DF0C92AD8810F00E031C9 /* ToComeAtBusStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75DF0C82AD8810F00E031C9 /* ToComeAtBusStop.swift */; };
 		A7B67A562ADFEC1100C437EC /* WrappingHStack in Frameworks */ = {isa = PBXBuildFile; productRef = A7B67A552ADFEC1100C437EC /* WrappingHStack */; };
 		A7B67A582ADFF79400C437EC /* OneStopDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B67A572ADFF79400C437EC /* OneStopDetailView.swift */; };
@@ -71,6 +75,10 @@
 		A74234552AD9D7720019FFE0 /* Zone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Zone.swift; sourceTree = "<group>"; };
 		A74234582AD9D81A0019FFE0 /* BusStopZones.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BusStopZones.json; sourceTree = "<group>"; };
 		A742345A2AD9D8410019FFE0 /* ZoneController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoneController.swift; sourceTree = "<group>"; };
+		A74D839B2AE2E49E008BBEA9 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		A74D839D2AE2E7D9008BBEA9 /* LabeledDividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledDividerView.swift; sourceTree = "<group>"; };
+		A74D839F2AE408AB008BBEA9 /* LineReferencialController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineReferencialController.swift; sourceTree = "<group>"; };
+		A74D83A22AE40B9F008BBEA9 /* TimeFormattingUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFormattingUtils.swift; sourceTree = "<group>"; };
 		A75DF0C82AD8810F00E031C9 /* ToComeAtBusStop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToComeAtBusStop.swift; sourceTree = "<group>"; };
 		A7B67A572ADFF79400C437EC /* OneStopDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneStopDetailView.swift; sourceTree = "<group>"; };
 		A7B67A5C2AE019F300C437EC /* LineDirectionDestinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineDirectionDestinations.swift; sourceTree = "<group>"; };
@@ -141,6 +149,7 @@
 				A7B67A602AE0276100C437EC /* OneTimeView.swift */,
 				A74234512AD9D5CE0019FFE0 /* AllZoneView.swift */,
 				A7B67ACB2AE0759000C437EC /* LinePictoView.swift */,
+				A74D839D2AE2E7D9008BBEA9 /* LabeledDividerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -152,6 +161,23 @@
 				A74234552AD9D7720019FFE0 /* Zone.swift */,
 			);
 			path = Zones;
+			sourceTree = "<group>";
+		};
+		A74D839A2AE2E48C008BBEA9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A7B67ACD2AE0814A00C437EC /* ColorExtension.swift */,
+				A74D839B2AE2E49E008BBEA9 /* StringExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A74D83A12AE40B91008BBEA9 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				A74D83A22AE40B9F008BBEA9 /* TimeFormattingUtils.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		A75DF0C72AD880EB00E031C9 /* ToComeAtBusStop */ = {
@@ -198,9 +224,11 @@
 				A74234502AD9D42A0019FFE0 /* Views */,
 				A74234472AD999180019FFE0 /* Data */,
 				A7DAD1A22AD5BA9F00ABC3B0 /* StopIDFApp.swift */,
-				A7B67ACD2AE0814A00C437EC /* ColorExtension.swift */,
+				A74D839A2AE2E48C008BBEA9 /* Extensions */,
 				A7F9137C2AD84F1C007983E4 /* local.env.swift */,
 				A7F9137E2AD84FCB007983E4 /* NextPassageController.swift */,
+				A74D839F2AE408AB008BBEA9 /* LineReferencialController.swift */,
+				A74D83A12AE40B91008BBEA9 /* Utils */,
 				A742345A2AD9D8410019FFE0 /* ZoneController.swift */,
 				A742344A2AD99C6E0019FFE0 /* LocalDataManager.swift */,
 				A7F913802AD854B5007983E4 /* Errors */,
@@ -359,6 +387,7 @@
 				A7DAD1D12AD5BD3500ABC3B0 /* TrainNumbers.swift in Sources */,
 				A7DAD1BD2AD5BBF300ABC3B0 /* MonitoringRef.swift in Sources */,
 				A7DAD1B72AD5BB8800ABC3B0 /* ServiceDelivery.swift in Sources */,
+				A74D839C2AE2E49E008BBEA9 /* StringExtension.swift in Sources */,
 				A7DAD1C32AD5BC6700ABC3B0 /* OperatorRef.swift in Sources */,
 				A7DAD1BB2AD5BBE000ABC3B0 /* MonitoredStopVisit.swift in Sources */,
 				A742344F2AD9D4230019FFE0 /* TabsView.swift in Sources */,
@@ -375,9 +404,11 @@
 				A7DAD1A32AD5BA9F00ABC3B0 /* StopIDFApp.swift in Sources */,
 				A7B67A612AE0276100C437EC /* OneTimeView.swift in Sources */,
 				A7DAD1D32AD5BD5700ABC3B0 /* DataFrameRef.swift in Sources */,
+				A74D83A02AE408AB008BBEA9 /* LineReferencialController.swift in Sources */,
 				A74234462AD9979E0019FFE0 /* Fields.swift in Sources */,
 				A7DAD1C72AD5BC8E00ABC3B0 /* DestinationName.swift in Sources */,
 				A7DAD1D52AD5BD7400ABC3B0 /* DestinationDisplay.swift in Sources */,
+				A74D83A32AE40B9F008BBEA9 /* TimeFormattingUtils.swift in Sources */,
 				A74234452AD9979E0019FFE0 /* LineReferencial.swift in Sources */,
 				A75DF0C92AD8810F00E031C9 /* ToComeAtBusStop.swift in Sources */,
 				A7B67ACA2AE070CE00C437EC /* LineInfosForPicto.swift in Sources */,
@@ -389,6 +420,7 @@
 				A7F913822AD854C9007983E4 /* ApiRequestError.swift in Sources */,
 				A7DAD1CF2AD5BD0500ABC3B0 /* MonitoredCall.swift in Sources */,
 				A7DAD1B92AD5BBBE00ABC3B0 /* StopMonitoringDelivery.swift in Sources */,
+				A74D839E2AE2E7D9008BBEA9 /* LabeledDividerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
