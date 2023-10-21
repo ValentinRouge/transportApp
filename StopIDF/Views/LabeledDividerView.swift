@@ -19,10 +19,11 @@ struct LabelledDividerView: View {
         self.horizontalPadding = horizontalPadding
         self.color = color
     }
-
+    
+    // TODO: gérer mieux -> auj c'est moche quand il y a deux lignes
     var body: some View {
-        HStack {
-            Text(label).foregroundColor(color).font(.caption2).fixedSize()
+        HStack() {
+            Text(label).foregroundColor(color).font(.caption2).frame(maxWidth: UIScreen.screenWidth*0.95).fixedSize().padding(horizontalPadding)
             line
         }
     }
@@ -33,5 +34,5 @@ struct LabelledDividerView: View {
 }
 
 #Preview {
-    LabelledDividerView(label: "AZERTYUIOIUHGFDSDFGHJ DFGHJKJHGFD")
+    LabelledDividerView(label: "sdfghj", horizontalPadding: 0)
 }

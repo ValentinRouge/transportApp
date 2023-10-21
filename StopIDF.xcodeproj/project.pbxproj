@@ -25,6 +25,7 @@
 		A74D83A32AE40B9F008BBEA9 /* TimeFormattingUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74D83A22AE40B9F008BBEA9 /* TimeFormattingUtils.swift */; };
 		A74D83A52AE4100C008BBEA9 /* OneDestinationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74D83A42AE4100C008BBEA9 /* OneDestinationView.swift */; };
 		A74D83A72AE41110008BBEA9 /* OneDirectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74D83A62AE41110008BBEA9 /* OneDirectionView.swift */; };
+		A74D83A92AE4155A008BBEA9 /* UIScreenExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74D83A82AE4155A008BBEA9 /* UIScreenExtension.swift */; };
 		A75DF0C92AD8810F00E031C9 /* ToComeAtBusStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75DF0C82AD8810F00E031C9 /* ToComeAtBusStop.swift */; };
 		A7B67A562ADFEC1100C437EC /* WrappingHStack in Frameworks */ = {isa = PBXBuildFile; productRef = A7B67A552ADFEC1100C437EC /* WrappingHStack */; };
 		A7B67A582ADFF79400C437EC /* OneStopDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B67A572ADFF79400C437EC /* OneStopDetailView.swift */; };
@@ -83,6 +84,7 @@
 		A74D83A22AE40B9F008BBEA9 /* TimeFormattingUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFormattingUtils.swift; sourceTree = "<group>"; };
 		A74D83A42AE4100C008BBEA9 /* OneDestinationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneDestinationView.swift; sourceTree = "<group>"; };
 		A74D83A62AE41110008BBEA9 /* OneDirectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneDirectionView.swift; sourceTree = "<group>"; };
+		A74D83A82AE4155A008BBEA9 /* UIScreenExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreenExtension.swift; sourceTree = "<group>"; };
 		A75DF0C82AD8810F00E031C9 /* ToComeAtBusStop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToComeAtBusStop.swift; sourceTree = "<group>"; };
 		A7B67A572ADFF79400C437EC /* OneStopDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneStopDetailView.swift; sourceTree = "<group>"; };
 		A7B67A5C2AE019F300C437EC /* LineDirectionDestinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineDirectionDestinations.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				A7B67ACD2AE0814A00C437EC /* ColorExtension.swift */,
+				A74D83A82AE4155A008BBEA9 /* UIScreenExtension.swift */,
 				A74D839B2AE2E49E008BBEA9 /* StringExtension.swift */,
 			);
 			path = Extensions;
@@ -423,6 +426,7 @@
 				A74234522AD9D5CE0019FFE0 /* AllZoneView.swift in Sources */,
 				A7DAD1CB2AD5BCCF00ABC3B0 /* DestinationRef.swift in Sources */,
 				A74234572AD9D7720019FFE0 /* Zone.swift in Sources */,
+				A74D83A92AE4155A008BBEA9 /* UIScreenExtension.swift in Sources */,
 				A7B67AD32AE1C8BB00C437EC /* TrainNumbersRef.swift in Sources */,
 				A7DAD1CD2AD5BCE900ABC3B0 /* JourneyNote.swift in Sources */,
 				A7F913822AD854C9007983E4 /* ApiRequestError.swift in Sources */,
