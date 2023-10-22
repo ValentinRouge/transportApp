@@ -6,8 +6,12 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct TabsView: View {
+    @Environment(\.modelContext) var context
+    @Query var datas: [SDZones]
+    
     var body: some View {
         TabView{
             OneStopDetailView(ZoneID: "43164",ZoneName: "Favoris")

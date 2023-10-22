@@ -6,35 +6,45 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct AllZoneView: View {
-    let allZones: [Zone]
+    @Environment(\.modelContext) var context
+    @Query(sort: [SortDescriptor(\SDZones.town, order: .forward), SortDescriptor(\SDZones.name, order: .forward)]
+    ) var allZones: [SDZones]
     @State private var searchText = ""
     
-    init() {
-        self.allZones = ZoneController.instance.getAllZones()
+    var searchResults: [SDZones] {
+        if searchText.isEmpty {
+            return allZones
+        } else {
+            return allZones.filter{$0.name.localizedCaseInsensitiveContains(searchText)}
+        }
     }
     
     var body: some View {
         NavigationStack {
-            List(searchResults, id: \.fields.zdaid){ zone in
+            List(searchResults, id: \.id){ zone in
                 NavigationLink {
-                    OneStopDetailView(ZoneID: zone.fields.zdaid,ZoneName: zone.fields.zdaname)
+                    OneStopDetailView(ZoneID: zone.id,ZoneName: zone.name)
                 } label: {
-                    Text("\(zone.fields.zdaname) - \(zone.fields.zdatown)")
+                    Text("\(zone.name) - \(zone.town)")
                 }
             }
             .id(UUID())
-            .searchable(text: $searchText)
-        }
-
+            .searchable(text: $searchText,
+                        prompt: "Chercher un arrêt")
+        }.onAppear(perform: {
+            initializeZones()
+        })
     }
     
-    var searchResults: [Zone] {
-        if searchText.isEmpty {
-            return allZones
-        } else {
-            return allZones.filter{$0.fields.zdaname.localizedCaseInsensitiveContains(searchText)}
+    func initializeZones() {
+        if allZones.isEmpty {
+            let allSDZones = ZoneController.instance.getAllZones()
+            for zone in allSDZones {
+                context.insert(zone)
+            }
         }
     }
 }

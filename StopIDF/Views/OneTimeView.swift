@@ -10,7 +10,6 @@ import SwiftUI
 struct OneTimeView: View {
     let time: String
     
-    
     init(time: Int?) {
         if let unwrappedTime = time {
             if unwrappedTime <= 0 {

@@ -89,7 +89,7 @@ struct OneStopDetailView: View {
     }
     
     func getOneLineView(passage: ToComeAtBusStop) -> AnyView {
-        print(passage)
+        //print(passage)
         return AnyView(VStack(alignment: .leading, content: {
             LinePictoView(linePictoInfos: passage.LineInfosForPicto, lineName: passage.lineName ?? "Numéro inconnu")
             ForEach(passage.lineDirections) { direction in

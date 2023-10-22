@@ -6,11 +6,14 @@
 //
 
 import Foundation
+import SwiftData
 
 class ZoneController {
+    
     static let instance = ZoneController()
     
     var allZones: [Zone]
+    var allSDZones: [SDZones] = []
     let decoder = JSONDecoder()
     
     private init(){
@@ -25,21 +28,21 @@ class ZoneController {
         } else {
             allZones = []
         }
-        
-        sortZones()
     }
     
-    func getAllZones() -> [Zone] {
-        return allZones
+    func createSDZone(zone: Zone) -> SDZones {
+        return SDZones(id: zone.fields.zdaid, postalCode: zone.fields.zdapostalregion, mode: zone.fields.zdatype, yCoordinates: zone.fields.zdayepsg2154, xCoordinates: zone.fields.zdaxepsg2154, town: zone.fields.zdatown, name: zone.fields.zdaname)
     }
     
-    func sortZones(){
-        allZones.sort { Z1, Z2 in
-            if Z1.fields.zdatown == Z2.fields.zdatown {
-                return Z1.fields.zdaname < Z2.fields.zdaname
-            }
-            return Z1.fields.zdatown < Z2.fields.zdatown
+    func compilateSDZones() {
+        for zone in allZones {
+            allSDZones.append(createSDZone(zone: zone))
         }
+    }
+    
+    func getAllZones() -> [SDZones] {
+        compilateSDZones()
+        return allSDZones
     }
 
     
