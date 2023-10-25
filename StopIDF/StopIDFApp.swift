@@ -10,21 +10,12 @@ import SwiftData
 
 @main
 struct StopIDFApp: App {
-    let modelContainer: ModelContainer
-    
-    init() {
-        do {
-            modelContainer = try ModelContainer(for: SDZones.self)
-        } catch {
-            fatalError("Could not initialize ModelContainer")
-        }
-    }
-
+    @AppStorage("LineUpdateDate") var lineUpdateDate: Date = Date(timeIntervalSince1970: 0)
     
     var body: some Scene {
         WindowGroup {
             TabsView()
         }
-        .modelContainer(modelContainer)
+        .modelContainer(LineContainer.create(lastUpdateDate: &lineUpdateDate))
     }
 }

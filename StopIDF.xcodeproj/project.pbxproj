@@ -17,8 +17,10 @@
 		A74234522AD9D5CE0019FFE0 /* AllZoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74234512AD9D5CE0019FFE0 /* AllZoneView.swift */; };
 		A74234562AD9D7720019FFE0 /* ZoneFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74234542AD9D7720019FFE0 /* ZoneFields.swift */; };
 		A74234572AD9D7720019FFE0 /* Zone.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74234552AD9D7720019FFE0 /* Zone.swift */; };
-		A74234592AD9D81A0019FFE0 /* BusStopZones22.json in Resources */ = {isa = PBXBuildFile; fileRef = A74234582AD9D81A0019FFE0 /* BusStopZones22.json */; };
+		A74234592AD9D81A0019FFE0 /* BusStopZones.json in Resources */ = {isa = PBXBuildFile; fileRef = A74234582AD9D81A0019FFE0 /* BusStopZones.json */; };
 		A742345B2AD9D8410019FFE0 /* ZoneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A742345A2AD9D8410019FFE0 /* ZoneController.swift */; };
+		A74A8D502AE9BEAB0028CE8C /* LineContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74A8D4F2AE9BEAB0028CE8C /* LineContainer.swift */; };
+		A74A8D522AE9C42E0028CE8C /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74A8D512AE9C42E0028CE8C /* DateExtension.swift */; };
 		A74D839C2AE2E49E008BBEA9 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74D839B2AE2E49E008BBEA9 /* StringExtension.swift */; };
 		A74D839E2AE2E7D9008BBEA9 /* LabeledDividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74D839D2AE2E7D9008BBEA9 /* LabeledDividerView.swift */; };
 		A74D83A02AE408AB008BBEA9 /* LineReferencialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74D839F2AE408AB008BBEA9 /* LineReferencialController.swift */; };
@@ -78,8 +80,10 @@
 		A74234512AD9D5CE0019FFE0 /* AllZoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllZoneView.swift; sourceTree = "<group>"; };
 		A74234542AD9D7720019FFE0 /* ZoneFields.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoneFields.swift; sourceTree = "<group>"; };
 		A74234552AD9D7720019FFE0 /* Zone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Zone.swift; sourceTree = "<group>"; };
-		A74234582AD9D81A0019FFE0 /* BusStopZones22.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BusStopZones22.json; sourceTree = "<group>"; };
+		A74234582AD9D81A0019FFE0 /* BusStopZones.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BusStopZones.json; sourceTree = "<group>"; };
 		A742345A2AD9D8410019FFE0 /* ZoneController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoneController.swift; sourceTree = "<group>"; };
+		A74A8D4F2AE9BEAB0028CE8C /* LineContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineContainer.swift; sourceTree = "<group>"; };
+		A74A8D512AE9C42E0028CE8C /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		A74D839B2AE2E49E008BBEA9 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		A74D839D2AE2E7D9008BBEA9 /* LabeledDividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledDividerView.swift; sourceTree = "<group>"; };
 		A74D839F2AE408AB008BBEA9 /* LineReferencialController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineReferencialController.swift; sourceTree = "<group>"; };
@@ -146,7 +150,7 @@
 			children = (
 				A7B67ACF2AE0851100C437EC /* IDFVoyageur-Bold.otf */,
 				A74234482AD999290019FFE0 /* TransportLines.json */,
-				A74234582AD9D81A0019FFE0 /* BusStopZones22.json */,
+				A74234582AD9D81A0019FFE0 /* BusStopZones.json */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -182,6 +186,7 @@
 			children = (
 				A7B67ACD2AE0814A00C437EC /* ColorExtension.swift */,
 				A74D83A82AE4155A008BBEA9 /* UIScreenExtension.swift */,
+				A74A8D512AE9C42E0028CE8C /* DateExtension.swift */,
 				A74D839B2AE2E49E008BBEA9 /* StringExtension.swift */,
 			);
 			path = Extensions;
@@ -247,6 +252,7 @@
 				A74234502AD9D42A0019FFE0 /* Views */,
 				A74234472AD999180019FFE0 /* Data */,
 				A7DAD1A22AD5BA9F00ABC3B0 /* StopIDFApp.swift */,
+				A74A8D4F2AE9BEAB0028CE8C /* LineContainer.swift */,
 				A74D839A2AE2E48C008BBEA9 /* Extensions */,
 				A7F9137C2AD84F1C007983E4 /* local.env.swift */,
 				A7F9137E2AD84FCB007983E4 /* NextPassageController.swift */,
@@ -384,7 +390,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7B67AD02AE0851100C437EC /* IDFVoyageur-Bold.otf in Resources */,
-				A74234592AD9D81A0019FFE0 /* BusStopZones22.json in Resources */,
+				A74234592AD9D81A0019FFE0 /* BusStopZones.json in Resources */,
 				A7DAD1AA2AD5BAA100ABC3B0 /* Preview Assets.xcassets in Resources */,
 				A7DAD1A72AD5BAA100ABC3B0 /* Assets.xcassets in Resources */,
 				A74234492AD999290019FFE0 /* TransportLines.json in Resources */,
@@ -399,6 +405,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A74D83A52AE4100C008BBEA9 /* OneDestinationView.swift in Sources */,
+				A74A8D502AE9BEAB0028CE8C /* LineContainer.swift in Sources */,
 				A7B67ACC2AE0759000C437EC /* LinePictoView.swift in Sources */,
 				A7669F6A2AE5625C00080FC3 /* SwiftUIView.swift in Sources */,
 				A74234562AD9D7720019FFE0 /* ZoneFields.swift in Sources */,
@@ -406,6 +413,7 @@
 				A7DAD1C52AD5BC7900ABC3B0 /* FramedVehicleJourneyRef.swift in Sources */,
 				A7DAD1B52AD5BB6800ABC3B0 /* Siri.swift in Sources */,
 				A7B67A582ADFF79400C437EC /* OneStopDetailView.swift in Sources */,
+				A74A8D522AE9C42E0028CE8C /* DateExtension.swift in Sources */,
 				A7F9137D2AD84F1C007983E4 /* local.env.swift in Sources */,
 				A74234442AD9979E0019FFE0 /* Picto.swift in Sources */,
 				A7DAD1C12AD5BC3D00ABC3B0 /* LineRef.swift in Sources */,

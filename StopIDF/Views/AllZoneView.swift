@@ -31,20 +31,9 @@ struct AllZoneView: View {
                     Text("\(zone.name) - \(zone.town)")
                 }
             }
-            .id(UUID())
+            //.id(UUID())
             .searchable(text: $searchText,
                         prompt: "Chercher un arrêt")
-        }.onAppear(perform: {
-            initializeZones()
-        })
-    }
-    
-    func initializeZones() {
-        if allZones.isEmpty {
-            let allSDZones = ZoneController.instance.getAllZones()
-            for zone in allSDZones {
-                context.insert(zone)
-            }
         }
     }
 }
