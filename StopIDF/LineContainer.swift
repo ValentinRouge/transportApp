@@ -17,7 +17,8 @@ actor LineContainer {
         do {
             let container = try ModelContainer(for: schema, configurations: configuration)
             
-            if lastUpdateDate.timeIntervalSinceNow < -604800 { 
+            if lastUpdateDate.timeIntervalSinceNow < -604800 { //
+                print("Line initialization")
                 let allSDZones = ZoneController.instance.getAllZones()
                 try container.mainContext.delete(model: SDZones.self)
                 for zone in allSDZones {

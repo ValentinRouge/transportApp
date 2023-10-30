@@ -17,7 +17,7 @@ class SDZones {
     let yCoordinates : Int
     let xCoordinates : Int
     let town : String
-    let name : String
+    @Attribute(.spotlight) let name : String
 
 
     init(id: String, postalCode: String, mode: String, yCoordinates: Int, xCoordinates: Int, town: String, name: String) {
