@@ -6,26 +6,28 @@
 //
 
 import SwiftUI
+import SwiftData
 import WrappingHStack
 import FlowStackLayout
 
 struct OneStopDetailView: View {
     @State var buttonEnabled = true
     @State var passagesList: [ToComeAtBusStop] = []
-    let ZoneID: String
-    let ZoneName: String
     @State var APIerror: ApiRequestError?
+    @State var Stop: SDZones
     
-    init(ZoneID: String, ZoneName: String) {
-        self.ZoneID = ZoneID
-        self.ZoneName = ZoneName
+    init(Zone: SDZones) {
+        print(Zone.name)
+        print(Zone.id)
+        
+        self.Stop = Zone
     }
     
     var body: some View {
         ScrollView {
             VStack {
                 VStack(alignment: .leading, spacing: 5, content: {
-                    Text(ZoneName)
+                    Text(Stop.name)
                         .font(.title)
                     Divider()
                         .frame(height: 0)
@@ -65,11 +67,10 @@ struct OneStopDetailView: View {
                     .disabled(!buttonEnabled)
             }
         }
-
     }
     
     func updateNextPassages() {
-        NextPassageController.instance.fetchNextPassage(StopID: ZoneID ,nextPassageCompletionHandler: { displayInfoNextPassage, error in
+        NextPassageController.instance.fetchNextPassage(StopID: Stop.id ,nextPassageCompletionHandler: { displayInfoNextPassage, error in
             if let nextPassages = displayInfoNextPassage {
                 self.passagesList = nextPassages
             } else {
@@ -101,6 +102,6 @@ struct OneStopDetailView: View {
 }
 
 #Preview {
-    OneStopDetailView(ZoneID: "43232",ZoneName: "Général De Bollardière") // 43414 43238
+    OneStopDetailView(Zone: SDZones(id: "43232", postalCode: "1441", mode: "rail", yCoordinates: 12, xCoordinates: 12, town: "Paris", name: "Gare de Test")) // 43414 43238
 }
 

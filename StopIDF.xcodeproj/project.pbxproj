@@ -31,6 +31,7 @@
 		A74D83AC2AE41D78008BBEA9 /* SDZones.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74D83AB2AE41D78008BBEA9 /* SDZones.swift */; };
 		A75DF0C92AD8810F00E031C9 /* ToComeAtBusStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75DF0C82AD8810F00E031C9 /* ToComeAtBusStop.swift */; };
 		A7669F6A2AE5625C00080FC3 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7669F692AE5625C00080FC3 /* SwiftUIView.swift */; };
+		A798BF122AF0679700183E4F /* NavigationLazyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A798BF112AF0679700183E4F /* NavigationLazyView.swift */; };
 		A7B67A562ADFEC1100C437EC /* WrappingHStack in Frameworks */ = {isa = PBXBuildFile; productRef = A7B67A552ADFEC1100C437EC /* WrappingHStack */; };
 		A7B67A582ADFF79400C437EC /* OneStopDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B67A572ADFF79400C437EC /* OneStopDetailView.swift */; };
 		A7B67A5B2ADFFCE000C437EC /* FlowStackLayout in Frameworks */ = {isa = PBXBuildFile; productRef = A7B67A5A2ADFFCE000C437EC /* FlowStackLayout */; };
@@ -94,6 +95,7 @@
 		A74D83AB2AE41D78008BBEA9 /* SDZones.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDZones.swift; sourceTree = "<group>"; };
 		A75DF0C82AD8810F00E031C9 /* ToComeAtBusStop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToComeAtBusStop.swift; sourceTree = "<group>"; };
 		A7669F692AE5625C00080FC3 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
+		A798BF112AF0679700183E4F /* NavigationLazyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationLazyView.swift; sourceTree = "<group>"; };
 		A7B67A572ADFF79400C437EC /* OneStopDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneStopDetailView.swift; sourceTree = "<group>"; };
 		A7B67A5C2AE019F300C437EC /* LineDirectionDestinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineDirectionDestinations.swift; sourceTree = "<group>"; };
 		A7B67A5E2AE01A5C00C437EC /* LineDestinationToCome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineDestinationToCome.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				A74D83A62AE41110008BBEA9 /* OneDirectionView.swift */,
 				A7B67A602AE0276100C437EC /* OneTimeView.swift */,
 				A74234512AD9D5CE0019FFE0 /* AllZoneView.swift */,
+				A798BF112AF0679700183E4F /* NavigationLazyView.swift */,
 				A7B67ACB2AE0759000C437EC /* LinePictoView.swift */,
 				A74D839D2AE2E7D9008BBEA9 /* LabeledDividerView.swift */,
 				A7669F692AE5625C00080FC3 /* SwiftUIView.swift */,
@@ -418,6 +421,7 @@
 				A74234442AD9979E0019FFE0 /* Picto.swift in Sources */,
 				A7DAD1C12AD5BC3D00ABC3B0 /* LineRef.swift in Sources */,
 				A7DAD1D12AD5BD3500ABC3B0 /* TrainNumbers.swift in Sources */,
+				A798BF122AF0679700183E4F /* NavigationLazyView.swift in Sources */,
 				A7DAD1BD2AD5BBF300ABC3B0 /* MonitoringRef.swift in Sources */,
 				A7DAD1B72AD5BB8800ABC3B0 /* ServiceDelivery.swift in Sources */,
 				A74D839C2AE2E49E008BBEA9 /* StringExtension.swift in Sources */,

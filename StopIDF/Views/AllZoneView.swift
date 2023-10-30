@@ -23,7 +23,7 @@ struct AllZoneView: View {
         NavigationStack {
             List(visibleResults, id: \.id) { zone in
                 NavigationLink {
-                    OneStopDetailView(ZoneID: zone.id, ZoneName: zone.name)
+                    NavigationLazyView(OneStopDetailView(Zone: zone))
                 } label: {
                     Text("\(zone.name) - \(zone.town)")
                 }
