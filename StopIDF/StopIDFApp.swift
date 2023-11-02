@@ -8,6 +8,8 @@
 import SwiftUI
 import SwiftData
 
+typealias SDZones = ZoneSchemaV2.SDZones
+
 @main
 struct StopIDFApp: App {
     @AppStorage("LineUpdateDate") var lineUpdateDate: Date = Date(timeIntervalSince1970: 0)

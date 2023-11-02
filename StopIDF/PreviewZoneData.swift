@@ -1,0 +1,33 @@
+//
+//  PreviewZoneData.swift
+//  StopIDF
+//
+//  Created by Valentin Rouge on 02/11/2023.
+//
+
+import Foundation
+import SwiftData
+
+actor PreviewZoneData {
+    @MainActor
+    static var container: ModelContainer = {
+        do {
+            let container = try ModelContainer(for: SDZones.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
+            container.mainContext.insert(SDZones(id: "43412", postalCode: "12", mode: "rail", yCoordinates: 12, xCoordinates: 12, town: "Paris", name: "Test"))
+            return container
+        } catch {
+            fatalError("Erreur preview container")
+        }
+    }()
+
+    @MainActor
+    static var previewZone: SDZones = {
+
+        let container = PreviewZoneData.container
+        let zone = SDZones(id: "43412", postalCode: "12", mode: "rail", yCoordinates: 12, xCoordinates: 12, town: "Paris", name: "Test")
+        container.mainContext.insert(zone)
+
+        return zone
+    }()
+}
+

@@ -15,7 +15,7 @@ actor LineContainer {
         let schema = Schema([SDZones.self])
         let configuration = ModelConfiguration()
         do {
-            let container = try ModelContainer(for: schema, configurations: configuration)
+            let container = try ModelContainer(for: schema, migrationPlan: ZoneMigrationPlan.self, configurations: configuration)
             
             if lastUpdateDate.timeIntervalSinceNow < -604800 { //
                 print("Line initialization")
@@ -28,7 +28,7 @@ actor LineContainer {
             }
             return container
         } catch {
-            fatalError("Impossible to create Swift Data")
+            fatalError("Impossible to create Swift Data \(error)")
         }
     }
 }

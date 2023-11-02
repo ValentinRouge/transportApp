@@ -27,8 +27,18 @@ struct OneStopDetailView: View {
         ScrollView {
             VStack {
                 VStack(alignment: .leading, spacing: 5, content: {
-                    Text(Stop.name)
-                        .font(.title)
+                    HStack {
+                        Text(Stop.name)
+                            .font(.title)
+                        Spacer()
+                        //Button(Stop.is, action: <#T##() -> Void#>)
+                        Button() {
+                            
+                        } label: {
+                            Image(systemName: "star")
+                        }
+
+                    }
                     Divider()
                         .frame(height: 0)
                     
@@ -102,6 +112,10 @@ struct OneStopDetailView: View {
 }
 
 #Preview {
-    OneStopDetailView(Zone: SDZones(id: "43232", postalCode: "1441", mode: "rail", yCoordinates: 12, xCoordinates: 12, town: "Paris", name: "Gare de Test")) // 43414 43238
+    MainActor.assumeIsolated {
+        OneStopDetailView(Zone: PreviewZoneData.previewZone) // 43414 43238
+            .modelContainer(PreviewZoneData.container)
+    }
+    
 }
 

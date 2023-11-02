@@ -18,6 +18,7 @@ struct TabsView: View {
                 .tabItem {
                     Label("Favoris", systemImage: "star")
                 }
+             
             AllZoneView()
                 .tabItem {
                     Label("Tout", systemImage: "list.bullet")
