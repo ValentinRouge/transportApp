@@ -35,6 +35,7 @@
 		A76A05382AF3F29000FC6FC6 /* ZoneSchemaV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76A05372AF3F29000FC6FC6 /* ZoneSchemaV2.swift */; };
 		A76A053A2AF3F4A100FC6FC6 /* ZoneMigrationPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76A05392AF3F4A100FC6FC6 /* ZoneMigrationPlan.swift */; };
 		A798BF122AF0679700183E4F /* NavigationLazyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A798BF112AF0679700183E4F /* NavigationLazyView.swift */; };
+		A7A2DA6A2AF404BF003EF05F /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A2DA692AF404BF003EF05F /* FavoritesView.swift */; };
 		A7B67A562ADFEC1100C437EC /* WrappingHStack in Frameworks */ = {isa = PBXBuildFile; productRef = A7B67A552ADFEC1100C437EC /* WrappingHStack */; };
 		A7B67A582ADFF79400C437EC /* OneStopDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B67A572ADFF79400C437EC /* OneStopDetailView.swift */; };
 		A7B67A5B2ADFFCE000C437EC /* FlowStackLayout in Frameworks */ = {isa = PBXBuildFile; productRef = A7B67A5A2ADFFCE000C437EC /* FlowStackLayout */; };
@@ -102,6 +103,7 @@
 		A76A05372AF3F29000FC6FC6 /* ZoneSchemaV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoneSchemaV2.swift; sourceTree = "<group>"; };
 		A76A05392AF3F4A100FC6FC6 /* ZoneMigrationPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoneMigrationPlan.swift; sourceTree = "<group>"; };
 		A798BF112AF0679700183E4F /* NavigationLazyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationLazyView.swift; sourceTree = "<group>"; };
+		A7A2DA692AF404BF003EF05F /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		A7B67A572ADFF79400C437EC /* OneStopDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneStopDetailView.swift; sourceTree = "<group>"; };
 		A7B67A5C2AE019F300C437EC /* LineDirectionDestinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineDirectionDestinations.swift; sourceTree = "<group>"; };
 		A7B67A5E2AE01A5C00C437EC /* LineDestinationToCome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineDestinationToCome.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				A742344E2AD9D4230019FFE0 /* TabsView.swift */,
+				A7A2DA692AF404BF003EF05F /* FavoritesView.swift */,
 				A7B67A572ADFF79400C437EC /* OneStopDetailView.swift */,
 				A74D83A42AE4100C008BBEA9 /* OneDestinationView.swift */,
 				A74D83A62AE41110008BBEA9 /* OneDirectionView.swift */,
@@ -460,6 +463,7 @@
 				A7DAD1D52AD5BD7400ABC3B0 /* DestinationDisplay.swift in Sources */,
 				A74D83A32AE40B9F008BBEA9 /* TimeFormattingUtils.swift in Sources */,
 				A76A05382AF3F29000FC6FC6 /* ZoneSchemaV2.swift in Sources */,
+				A7A2DA6A2AF404BF003EF05F /* FavoritesView.swift in Sources */,
 				A74234452AD9979E0019FFE0 /* LineReferencial.swift in Sources */,
 				A75DF0C92AD8810F00E031C9 /* ToComeAtBusStop.swift in Sources */,
 				A7B67ACA2AE070CE00C437EC /* LineInfosForPicto.swift in Sources */,

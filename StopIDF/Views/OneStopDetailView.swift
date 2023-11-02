@@ -12,14 +12,12 @@ import FlowStackLayout
 
 struct OneStopDetailView: View {
     @State var buttonEnabled = true
+    @State var buttonAnimation = false
     @State var passagesList: [ToComeAtBusStop] = []
     @State var APIerror: ApiRequestError?
     @State var Stop: SDZones
     
     init(Zone: SDZones) {
-        print(Zone.name)
-        print(Zone.id)
-        
         self.Stop = Zone
     }
     
@@ -27,15 +25,30 @@ struct OneStopDetailView: View {
         ScrollView {
             VStack {
                 VStack(alignment: .leading, spacing: 5, content: {
-                    HStack {
+                    HStack(spacing: 15) {
                         Text(Stop.name)
                             .font(.title)
+                        
                         Spacer()
-                        //Button(Stop.is, action: <#T##() -> Void#>)
+                        
                         Button() {
-                            
+                            withAnimation {
+                                updateNextPassages()
+                                self.buttonAnimation.toggle()
+                            }
                         } label: {
-                            Image(systemName: "star")
+                            Image(systemName: "arrow.clockwise")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(height: 25)
+                                .rotationEffect(.degrees(self.buttonAnimation ? 360 : 0))
+                        }
+                            .disabled(!buttonEnabled)
+                        
+                        Button() {
+                            Stop.isFavorite.toggle()
+                        } label: {
+                            Stop.isFavorite ? Image(systemName: "star.slash.fill").resizable().frame(width: 25,height: 25) : Image(systemName: "star").resizable().frame(width: 25,height: 25)
                         }
 
                     }
@@ -71,10 +84,7 @@ struct OneStopDetailView: View {
                 .onAppear(perform: {
                     updateNextPassages()
                 })
-                
-                Button("Actualiser", action: updateNextPassages)
-                    .buttonStyle(.borderedProminent)
-                    .disabled(!buttonEnabled)
+
             }
         }
     }
@@ -92,6 +102,7 @@ struct OneStopDetailView: View {
         buttonEnabled.toggle()
         DispatchQueue.main.asyncAfter(deadline: .now() + 30) {
             buttonEnabled.toggle()
+            buttonAnimation.toggle()
         }
     }
     

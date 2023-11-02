@@ -14,7 +14,7 @@ struct TabsView: View {
     
     var body: some View {
         TabView{
-            OneStopDetailView(Zone: SDZones(id: "43164", postalCode: "1111", mode: "rail", yCoordinates: 12, xCoordinates: 12, town: "Paris", name: "Favoris"))
+            FavoritesView()
                 .tabItem {
                     Label("Favoris", systemImage: "star")
                 }

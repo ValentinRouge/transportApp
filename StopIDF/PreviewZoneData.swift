@@ -13,7 +13,11 @@ actor PreviewZoneData {
     static var container: ModelContainer = {
         do {
             let container = try ModelContainer(for: SDZones.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
-            container.mainContext.insert(SDZones(id: "43412", postalCode: "12", mode: "rail", yCoordinates: 12, xCoordinates: 12, town: "Paris", name: "Test"))
+            
+            let zone = SDZones(id: "43412", postalCode: "12", mode: "rail", yCoordinates: 12, xCoordinates: 12, town: "Paris", name: "Test")
+            zone.isFavorite = true
+            
+            container.mainContext.insert(zone)
             return container
         } catch {
             fatalError("Erreur preview container")
@@ -24,7 +28,10 @@ actor PreviewZoneData {
     static var previewZone: SDZones = {
 
         let container = PreviewZoneData.container
+
         let zone = SDZones(id: "43412", postalCode: "12", mode: "rail", yCoordinates: 12, xCoordinates: 12, town: "Paris", name: "Test")
+        zone.isFavorite = true
+        
         container.mainContext.insert(zone)
 
         return zone
