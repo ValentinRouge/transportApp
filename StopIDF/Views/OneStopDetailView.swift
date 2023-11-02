@@ -12,7 +12,6 @@ import FlowStackLayout
 
 struct OneStopDetailView: View {
     @State var buttonEnabled = true
-    @State var buttonAnimation = false
     @State var passagesList: [ToComeAtBusStop] = []
     @State var APIerror: ApiRequestError?
     @State var Stop: SDZones
@@ -34,14 +33,13 @@ struct OneStopDetailView: View {
                         Button() {
                             withAnimation {
                                 updateNextPassages()
-                                self.buttonAnimation.toggle()
                             }
                         } label: {
                             Image(systemName: "arrow.clockwise")
                                 .resizable()
                                 .scaledToFit()
                                 .frame(height: 25)
-                                .rotationEffect(.degrees(self.buttonAnimation ? 360 : 0))
+                                .rotationEffect(.degrees(self.buttonEnabled ? 0 : 360))
                         }
                             .disabled(!buttonEnabled)
                         
@@ -99,10 +97,9 @@ struct OneStopDetailView: View {
                 print(error!)
             }
         })
-        buttonEnabled.toggle()
+        enableButton()
         DispatchQueue.main.asyncAfter(deadline: .now() + 30) {
-            buttonEnabled.toggle()
-            buttonAnimation.toggle()
+            enableButton()
         }
     }
     
