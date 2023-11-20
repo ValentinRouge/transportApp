@@ -31,7 +31,8 @@ class ZoneController {
     }
     
     func createSDZone(zone: Zone) -> SDZones {
-        return SDZones(id: zone.fields.zdaid, postalCode: zone.fields.zdapostalregion, mode: zone.fields.zdatype, yCoordinates: zone.fields.zdayepsg2154, xCoordinates: zone.fields.zdaxepsg2154, town: zone.fields.zdatown, name: zone.fields.zdaname)
+        let (lat, long) = GeographicUtils.convertLambert93ToWGS84(x: Double(zone.fields.zdaxepsg2154), y: Double(zone.fields.zdayepsg2154))
+        return SDZones(id: zone.fields.zdaid, postalCode: zone.fields.zdapostalregion, mode: zone.fields.zdatype, latitude: lat, longitude: long, town: zone.fields.zdatown, name: zone.fields.zdaname)
     }
     
     func compilateSDZones() {

@@ -10,7 +10,7 @@ import SwiftData
 
 enum ZoneMigrationPlan: SchemaMigrationPlan {
     static var schemas: [VersionedSchema.Type] {
-        [ZoneSchemaV1.self, ZoneSchemaV2.self]
+        [ZoneSchemaV1.self, ZoneSchemaV2.self, ZoneSchemaV3.self]
     }
     
     static var stages: [MigrationStage] {
@@ -24,7 +24,6 @@ enum ZoneMigrationPlan: SchemaMigrationPlan {
         let items = try? context.fetch(FetchDescriptor<ZoneSchemaV2.SDZones>())
         
         print("here")
-        
         items?.forEach { item in
             print("migration")
             item.isFavorite = false
@@ -32,4 +31,22 @@ enum ZoneMigrationPlan: SchemaMigrationPlan {
         
         try? context.save()
     })
+    
+    static let migrateV2toV3 = MigrationStage.custom(fromVersion: ZoneSchemaV2.self,
+                                                     toVersion: ZoneSchemaV3.self,
+                                                     willMigrate: nil,
+                                                     didMigrate: { context in
+                                                            
+        let items = try? context.fetch(FetchDescriptor<ZoneSchemaV3.SDZones>())
+        print("here")
+        items?.forEach { item in
+            (item.latitude, item.longitude) = GeographicUtils.convertLambert93ToWGS84(x: Double(item.longitude), y: Double(item.latitude))
+        }
+        
+        try? context.save()
+        
+    })
+
+    
+    
 }

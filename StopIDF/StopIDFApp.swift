@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftData
 
-typealias SDZones = ZoneSchemaV2.SDZones
+typealias SDZones = ZoneSchemaV3.SDZones
 
 @main
 struct StopIDFApp: App {

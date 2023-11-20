@@ -23,6 +23,9 @@ struct TabsView: View {
                 .tabItem {
                     Label("Tout", systemImage: "list.bullet")
                 }
+            
+            MapView()
+                .tabItem { Label("Carte", systemImage: "map") }
         }
     }
 }

@@ -14,7 +14,7 @@ actor PreviewZoneData {
         do {
             let container = try ModelContainer(for: SDZones.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
             
-            let zone = SDZones(id: "43412", postalCode: "12", mode: "rail", yCoordinates: 12, xCoordinates: 12, town: "Paris", name: "Test")
+            let zone = SDZones(id: "43412", postalCode: "12", mode: "rail", latitude: 12, longitude: 12, town: "Paris", name: "Test")
             zone.isFavorite = true
             
             container.mainContext.insert(zone)
@@ -29,7 +29,7 @@ actor PreviewZoneData {
 
         let container = PreviewZoneData.container
 
-        let zone = SDZones(id: "43412", postalCode: "12", mode: "rail", yCoordinates: 12, xCoordinates: 12, town: "Paris", name: "Test")
+        let zone = SDZones(id: "43412", postalCode: "12", mode: "rail", latitude: 12, longitude: 12, town: "Paris", name: "Test")
         zone.isFavorite = true
         
         container.mainContext.insert(zone)

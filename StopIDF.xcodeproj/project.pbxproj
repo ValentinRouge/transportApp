@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A722A62F2B04268200CB709C /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A722A62E2B04268200CB709C /* LocationManager.swift */; };
+		A72A0CAE2AF5BAE000A50BAA /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72A0CAD2AF5BAE000A50BAA /* MapView.swift */; };
+		A72A0CB12AF688A800A50BAA /* GeographicUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72A0CB02AF688A800A50BAA /* GeographicUtils.swift */; };
+		A72A0CB32AF7E22B00A50BAA /* ZoneSchemaV3.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72A0CB22AF7E22B00A50BAA /* ZoneSchemaV3.swift */; };
 		A74234442AD9979E0019FFE0 /* Picto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74234412AD9979E0019FFE0 /* Picto.swift */; };
 		A74234452AD9979E0019FFE0 /* LineReferencial.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74234422AD9979E0019FFE0 /* LineReferencial.swift */; };
 		A74234462AD9979E0019FFE0 /* Fields.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74234432AD9979E0019FFE0 /* Fields.swift */; };
@@ -69,12 +73,17 @@
 		A7DAD1D32AD5BD5700ABC3B0 /* DataFrameRef.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DAD1D22AD5BD5700ABC3B0 /* DataFrameRef.swift */; };
 		A7DAD1D52AD5BD7400ABC3B0 /* DestinationDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DAD1D42AD5BD7400ABC3B0 /* DestinationDisplay.swift */; };
 		A7DAD1D72AD5BD8D00ABC3B0 /* StopPointName.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DAD1D62AD5BD8D00ABC3B0 /* StopPointName.swift */; };
+		A7E043012B0AC7C8005D53BC /* MKCoordinateRegionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E043002B0AC7C8005D53BC /* MKCoordinateRegionExtension.swift */; };
 		A7F9137D2AD84F1C007983E4 /* local.env.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F9137C2AD84F1C007983E4 /* local.env.swift */; };
 		A7F9137F2AD84FCB007983E4 /* NextPassageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F9137E2AD84FCB007983E4 /* NextPassageController.swift */; };
 		A7F913822AD854C9007983E4 /* ApiRequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F913812AD854C9007983E4 /* ApiRequestError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A722A62E2B04268200CB709C /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		A72A0CAD2AF5BAE000A50BAA /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		A72A0CB02AF688A800A50BAA /* GeographicUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeographicUtils.swift; sourceTree = "<group>"; };
+		A72A0CB22AF7E22B00A50BAA /* ZoneSchemaV3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoneSchemaV3.swift; sourceTree = "<group>"; };
 		A74234412AD9979E0019FFE0 /* Picto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Picto.swift; sourceTree = "<group>"; };
 		A74234422AD9979E0019FFE0 /* LineReferencial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineReferencial.swift; sourceTree = "<group>"; };
 		A74234432AD9979E0019FFE0 /* Fields.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fields.swift; sourceTree = "<group>"; };
@@ -137,6 +146,7 @@
 		A7DAD1D22AD5BD5700ABC3B0 /* DataFrameRef.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFrameRef.swift; sourceTree = "<group>"; };
 		A7DAD1D42AD5BD7400ABC3B0 /* DestinationDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationDisplay.swift; sourceTree = "<group>"; };
 		A7DAD1D62AD5BD8D00ABC3B0 /* StopPointName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopPointName.swift; sourceTree = "<group>"; };
+		A7E043002B0AC7C8005D53BC /* MKCoordinateRegionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKCoordinateRegionExtension.swift; sourceTree = "<group>"; };
 		A7F9137C2AD84F1C007983E4 /* local.env.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = local.env.swift; sourceTree = "<group>"; };
 		A7F9137E2AD84FCB007983E4 /* NextPassageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextPassageController.swift; sourceTree = "<group>"; };
 		A7F913812AD854C9007983E4 /* ApiRequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequestError.swift; sourceTree = "<group>"; };
@@ -170,6 +180,7 @@
 			children = (
 				A742344E2AD9D4230019FFE0 /* TabsView.swift */,
 				A7A2DA692AF404BF003EF05F /* FavoritesView.swift */,
+				A72A0CAD2AF5BAE000A50BAA /* MapView.swift */,
 				A7B67A572ADFF79400C437EC /* OneStopDetailView.swift */,
 				A74D83A42AE4100C008BBEA9 /* OneDestinationView.swift */,
 				A74D83A62AE41110008BBEA9 /* OneDirectionView.swift */,
@@ -200,6 +211,7 @@
 				A74D83A82AE4155A008BBEA9 /* UIScreenExtension.swift */,
 				A74A8D512AE9C42E0028CE8C /* DateExtension.swift */,
 				A74D839B2AE2E49E008BBEA9 /* StringExtension.swift */,
+				A7E043002B0AC7C8005D53BC /* MKCoordinateRegionExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -217,6 +229,7 @@
 			children = (
 				A76A05352AF3EE7200FC6FC6 /* ZoneSchemaV1.swift */,
 				A76A05372AF3F29000FC6FC6 /* ZoneSchemaV2.swift */,
+				A72A0CB22AF7E22B00A50BAA /* ZoneSchemaV3.swift */,
 			);
 			path = SDZones;
 			sourceTree = "<group>";
@@ -266,6 +279,7 @@
 				A74234472AD999180019FFE0 /* Data */,
 				A7DAD1A22AD5BA9F00ABC3B0 /* StopIDFApp.swift */,
 				A76A05332AF3C9B400FC6FC6 /* PreviewZoneData.swift */,
+				A72A0CB02AF688A800A50BAA /* GeographicUtils.swift */,
 				A74A8D4F2AE9BEAB0028CE8C /* LineContainer.swift */,
 				A74D839A2AE2E48C008BBEA9 /* Extensions */,
 				A7F9137C2AD84F1C007983E4 /* local.env.swift */,
@@ -278,6 +292,7 @@
 				A7DAD1B02AD5BAC700ABC3B0 /* DataModel */,
 				A7DAD1A62AD5BAA100ABC3B0 /* Assets.xcassets */,
 				A7DAD1A82AD5BAA100ABC3B0 /* Preview Content */,
+				A722A62E2B04268200CB709C /* LocationManager.swift */,
 			);
 			path = StopIDF;
 			sourceTree = "<group>";
@@ -438,6 +453,7 @@
 				A798BF122AF0679700183E4F /* NavigationLazyView.swift in Sources */,
 				A7DAD1BD2AD5BBF300ABC3B0 /* MonitoringRef.swift in Sources */,
 				A7DAD1B72AD5BB8800ABC3B0 /* ServiceDelivery.swift in Sources */,
+				A7E043012B0AC7C8005D53BC /* MKCoordinateRegionExtension.swift in Sources */,
 				A74D839C2AE2E49E008BBEA9 /* StringExtension.swift in Sources */,
 				A7DAD1C32AD5BC6700ABC3B0 /* OperatorRef.swift in Sources */,
 				A74D83A72AE41110008BBEA9 /* OneDirectionView.swift in Sources */,
@@ -449,6 +465,7 @@
 				A742344B2AD99C6E0019FFE0 /* LocalDataManager.swift in Sources */,
 				A7F9137F2AD84FCB007983E4 /* NextPassageController.swift in Sources */,
 				A7DAD1C92AD5BCB400ABC3B0 /* DirectionName.swift in Sources */,
+				A72A0CB32AF7E22B00A50BAA /* ZoneSchemaV3.swift in Sources */,
 				A7B67ACE2AE0814A00C437EC /* ColorExtension.swift in Sources */,
 				A7B67A5D2AE019F300C437EC /* LineDirectionDestinations.swift in Sources */,
 				A7DAD1D72AD5BD8D00ABC3B0 /* StopPointName.swift in Sources */,
@@ -456,10 +473,13 @@
 				A7DAD1A32AD5BA9F00ABC3B0 /* StopIDFApp.swift in Sources */,
 				A7B67A612AE0276100C437EC /* OneTimeView.swift in Sources */,
 				A7DAD1D32AD5BD5700ABC3B0 /* DataFrameRef.swift in Sources */,
+				A722A62F2B04268200CB709C /* LocationManager.swift in Sources */,
 				A74D83A02AE408AB008BBEA9 /* LineReferencialController.swift in Sources */,
 				A76A05362AF3EE7200FC6FC6 /* ZoneSchemaV1.swift in Sources */,
 				A74234462AD9979E0019FFE0 /* Fields.swift in Sources */,
 				A7DAD1C72AD5BC8E00ABC3B0 /* DestinationName.swift in Sources */,
+				A72A0CAE2AF5BAE000A50BAA /* MapView.swift in Sources */,
+				A72A0CB12AF688A800A50BAA /* GeographicUtils.swift in Sources */,
 				A7DAD1D52AD5BD7400ABC3B0 /* DestinationDisplay.swift in Sources */,
 				A74D83A32AE40B9F008BBEA9 /* TimeFormattingUtils.swift in Sources */,
 				A76A05382AF3F29000FC6FC6 /* ZoneSchemaV2.swift in Sources */,

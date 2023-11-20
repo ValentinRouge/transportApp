@@ -28,7 +28,7 @@ struct SwiftUIView: View {
                 .foregroundStyle(.tint)
             Text("Hello, world!")
             Button(action: {
-                context.insert(SDZones(id: "testt", postalCode: "tes", mode: "tes", yCoordinates: 12, xCoordinates: 12, town: "tes", name: "tes"))
+                context.insert(SDZones(id: "testt", postalCode: "tes", mode: "tes", latitude: 12, longitude: 12, town: "tes", name: "tes"))
             }, label: {
                 Text("Add")
             })
