@@ -18,8 +18,11 @@ struct MapView: View {
     @StateObject var locationManager = LocationManager()
     @State private var position: MapCameraPosition = .userLocation( fallback: .item( MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 48.8534100, longitude: 2.3488000))), allowsAutomaticPitch: false))
     
+    @State private var showDetailOfStop: Bool = false
+    @State private var selectedZone:SDZones?
+    
     var body: some View {
-        Map(position: $position) {
+        Map(position: $position, selection: $selectedZone) {
             UserAnnotation()
             
             ForEach(allZones, id: \.id) {zone in
@@ -30,10 +33,9 @@ struct MapView: View {
                 ) {
                     TransportModeSymbolView(transportMode: zone.mode)
                 }
+                .tag(zone)
                  
             }
-             
-
         }
         .mapControls {
             MapUserLocationButton()
@@ -45,6 +47,26 @@ struct MapView: View {
             visibleRect = context.region
             fetchStopsOnView()
         }
+        .sheet(isPresented: $showDetailOfStop, onDismiss: {
+            selectedZone = nil
+        }) {
+            if let zone = selectedZone {
+                OneStopDetailView(Zone: zone)
+                    .presentationDetents([.fraction(0.40) ,.large])
+                    .presentationBackgroundInteraction(.enabled(upThrough: .fraction(0.40)))
+            } else {
+                Text("Zone incorrecte")
+            }
+    
+        }
+        .onChange(of: selectedZone) {
+            if (selectedZone != nil) {
+                showDetailOfStop = true
+            } else {
+                showDetailOfStop = false
+            }
+        }
+
     }
     
     func fetchStopsOnView() {
