@@ -23,7 +23,14 @@ struct MapView: View {
             UserAnnotation()
             
             ForEach(allZones, id: \.id) {zone in
-                Marker(zone.name, coordinate: CLLocationCoordinate2D(latitude: zone.latitude, longitude: zone.longitude))
+                
+                Annotation(
+                    zone.name,
+                    coordinate: CLLocationCoordinate2D(latitude: zone.latitude, longitude: zone.longitude)
+                ) {
+                    TransportModeSymbolView(transportMode: zone.mode)
+                }
+                 
             }
              
 
@@ -42,11 +49,11 @@ struct MapView: View {
     
     func fetchStopsOnView() {
         Task {
-            let minLatitude = Double(visibleRect?.center.latitude ?? 0) - Double(visibleRect?.span.latitudeDelta ?? 0)
-            let maxLatitude = Double(visibleRect?.center.latitude ?? 0) + Double(visibleRect?.span.latitudeDelta ?? 0)
+            let minLatitude = Double(visibleRect?.center.latitude ?? 0) - Double(visibleRect?.span.latitudeDelta ?? 0)/2
+            let maxLatitude = Double(visibleRect?.center.latitude ?? 0) + Double(visibleRect?.span.latitudeDelta ?? 0)/2
             
-            let minLongitude = Double(visibleRect?.center.longitude ?? 0) - Double(visibleRect?.span.longitudeDelta ?? 0)
-            let maxLongitude = Double(visibleRect?.center.longitude ?? 0) + Double(visibleRect?.span.longitudeDelta ?? 0)
+            let minLongitude = Double(visibleRect?.center.longitude ?? 0) - Double(visibleRect?.span.longitudeDelta ?? 0)/2
+            let maxLongitude = Double(visibleRect?.center.longitude ?? 0) + Double(visibleRect?.span.longitudeDelta ?? 0)/2
 
             
             let predicate = #Predicate<SDZones> {

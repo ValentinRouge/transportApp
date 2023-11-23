@@ -17,8 +17,8 @@ struct OneStopDetailView: View {
     @State var Stop: SDZones
     
     init(Zone: SDZones) {
-        print(Zone.latitude)
-        print(Zone.longitude)
+//        print(Zone.latitude)
+//        print(Zone.longitude)
     
         self.Stop = Zone
     }
