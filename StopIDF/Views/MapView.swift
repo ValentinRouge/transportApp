@@ -21,21 +21,52 @@ struct MapView: View {
     @State private var showDetailOfStop: Bool = false
     @State private var selectedZone:SDZones?
     
+    @State private var gridLatitudeNumber = 10.0
+    @State private var gridLongitudeNumber = 5.0
+    
+    @State private var maxLatitude: Double = 48.8534100
+    @State private var maxLongitude: Double = 2.3488000
+    
+    @State private var latitudeGrid = 1.0
+    @State private var longitudeGrid = 1.0
+    
     var body: some View {
         Map(position: $position, selection: $selectedZone) {
             UserAnnotation()
             
-            ForEach(allZones, id: \.id) {zone in
+            let grid = Dictionary(grouping: allZones) { zone -> String in
+                return "\(Int((maxLatitude - zone.latitude)/latitudeGrid))-\(Int((maxLongitude - zone.longitude)/longitudeGrid))-\(zone.mode)"
                 
-                Annotation(
-                    zone.name,
-                    coordinate: CLLocationCoordinate2D(latitude: zone.latitude, longitude: zone.longitude)
-                ) {
-                    TransportModeSymbolView(transportMode: zone.mode)
-                }
-                .tag(zone)
-                 
             }
+            
+            ForEach(Array(grid.keys), id: \.self) { key in
+                let markers = grid[key] ?? []
+                let markerCount = Double(markers.count)
+                if (markerCount > 4.0) {
+                    
+                    let (latitude, longitude) = getMeanLatLong(markers: markers, count: markerCount)
+                    
+                    Annotation(
+                        "",
+                        coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                    ) {
+                        MultiMarkerTransportModeView(transportMode: markers.first?.mode ?? "bus")
+                    }
+                } else {
+                    ForEach(markers, id: \.id) {zone in
+                        
+                        Annotation(
+                            zone.name,
+                            coordinate: CLLocationCoordinate2D(latitude: zone.latitude, longitude: zone.longitude)
+                        ) {
+                            TransportModeSymbolView(transportMode: zone.mode)
+                        }
+                        .tag(zone)
+                        
+                    }
+                }
+            }
+            
         }
         .mapControls {
             MapUserLocationButton()
@@ -44,6 +75,12 @@ struct MapView: View {
         }
         .mapStyle(.standard(pointsOfInterest: .excluding([.restaurant, .bakery, .bank, .cafe, .foodMarket, .nightlife, .winery])))
         .onMapCameraChange { context in
+            maxLatitude = context.region.center.latitude + context.region.span.latitudeDelta
+            maxLongitude = context.region.center.longitude + context.region.span.longitudeDelta
+            
+            latitudeGrid = context.region.span.latitudeDelta/gridLatitudeNumber
+            longitudeGrid = context.region.span.longitudeDelta/gridLongitudeNumber
+            
             visibleRect = context.region
             fetchStopsOnView()
         }
@@ -84,15 +121,30 @@ struct MapView: View {
                 (minLongitude ... maxLongitude).contains($0.longitude)
             }
             
-            
             let fetchDescriptor:FetchDescriptor = FetchDescriptor(predicate: predicate, sortBy: [SortDescriptor(\SDZones.town, order: .forward), SortDescriptor(\SDZones.name, order: .forward)])
             
             do {
                 allZones = try context.fetch(fetchDescriptor)
+                print("j'ai les zones en mémoire")
             } catch {
                 allZones = []
             }
         }
+    }
+    
+    func getMeanLatLong(markers: [SDZones], count: Double) -> (Double, Double) {
+        var sumOfLatitude = 0.0
+        var sumOfLongitude = 0.0
+        
+        markers.forEach { zone in
+            sumOfLatitude = sumOfLatitude + zone.latitude
+            sumOfLongitude = sumOfLongitude + zone.longitude
+        }
+        
+        let latitude = sumOfLatitude / count
+        let longitude = sumOfLongitude / count
+        
+        return (latitude, longitude)
     }
        
         

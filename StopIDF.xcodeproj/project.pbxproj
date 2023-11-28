@@ -52,6 +52,7 @@
 		A7B67ACE2AE0814A00C437EC /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B67ACD2AE0814A00C437EC /* ColorExtension.swift */; };
 		A7B67AD02AE0851100C437EC /* IDFVoyageur-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A7B67ACF2AE0851100C437EC /* IDFVoyageur-Bold.otf */; };
 		A7B67AD32AE1C8BB00C437EC /* TrainNumbersRef.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B67AD22AE1C8BB00C437EC /* TrainNumbersRef.swift */; };
+		A7C575CF2B168D8600CC741D /* MultiMarkerTransportModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C575CE2B168D8600CC741D /* MultiMarkerTransportModeView.swift */; };
 		A7DAD1A32AD5BA9F00ABC3B0 /* StopIDFApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DAD1A22AD5BA9F00ABC3B0 /* StopIDFApp.swift */; };
 		A7DAD1A72AD5BAA100ABC3B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7DAD1A62AD5BAA100ABC3B0 /* Assets.xcassets */; };
 		A7DAD1AA2AD5BAA100ABC3B0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7DAD1A92AD5BAA100ABC3B0 /* Preview Assets.xcassets */; };
@@ -125,6 +126,7 @@
 		A7B67ACF2AE0851100C437EC /* IDFVoyageur-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IDFVoyageur-Bold.otf"; sourceTree = "<group>"; };
 		A7B67AD12AE0858500C437EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		A7B67AD22AE1C8BB00C437EC /* TrainNumbersRef.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainNumbersRef.swift; sourceTree = "<group>"; };
+		A7C575CE2B168D8600CC741D /* MultiMarkerTransportModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiMarkerTransportModeView.swift; sourceTree = "<group>"; };
 		A7DAD19F2AD5BA9F00ABC3B0 /* StopIDF.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StopIDF.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7DAD1A22AD5BA9F00ABC3B0 /* StopIDFApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopIDFApp.swift; sourceTree = "<group>"; };
 		A7DAD1A62AD5BAA100ABC3B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				A7A2DA692AF404BF003EF05F /* FavoritesView.swift */,
 				A72A0CAD2AF5BAE000A50BAA /* MapView.swift */,
 				A77DAAC42B0E606E006D03B4 /* TransportModeSymbolView.swift */,
+				A7C575CE2B168D8600CC741D /* MultiMarkerTransportModeView.swift */,
 				A7B67A572ADFF79400C437EC /* OneStopDetailView.swift */,
 				A74D83A42AE4100C008BBEA9 /* OneDestinationView.swift */,
 				A74D83A62AE41110008BBEA9 /* OneDirectionView.swift */,
@@ -441,6 +444,7 @@
 				A74A8D502AE9BEAB0028CE8C /* LineContainer.swift in Sources */,
 				A7B67ACC2AE0759000C437EC /* LinePictoView.swift in Sources */,
 				A7669F6A2AE5625C00080FC3 /* SwiftUIView.swift in Sources */,
+				A7C575CF2B168D8600CC741D /* MultiMarkerTransportModeView.swift in Sources */,
 				A74234562AD9D7720019FFE0 /* ZoneFields.swift in Sources */,
 				A742344D2AD9C4720019FFE0 /* VehicleJourneyName.swift in Sources */,
 				A7DAD1C52AD5BC7900ABC3B0 /* FramedVehicleJourneyRef.swift in Sources */,
