@@ -94,6 +94,9 @@ struct OneStopDetailView: View {
         NextPassageController.instance.fetchNextPassage(StopID: Stop.id ,nextPassageCompletionHandler: { displayInfoNextPassage, error in
             if let nextPassages = displayInfoNextPassage {
                 self.passagesList = nextPassages
+                self.passagesList.sort { ToComeAtBusStop1, ToComeAtBusStop2 in
+                    ToComeAtBusStop1.lineName ?? "" < ToComeAtBusStop2.lineName ?? ""
+                }
             } else {
                 self.passagesList = []
                 APIerror = error
