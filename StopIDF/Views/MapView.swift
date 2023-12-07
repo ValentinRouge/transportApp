@@ -125,7 +125,6 @@ struct MapView: View {
             
             do {
                 allZones = try context.fetch(fetchDescriptor)
-                print("j'ai les zones en mémoire")
             } catch {
                 allZones = []
             }

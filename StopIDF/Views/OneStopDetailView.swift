@@ -114,6 +114,7 @@ struct OneStopDetailView: View {
         //print(passage)
         return AnyView(VStack(alignment: .leading, content: {
             LinePictoView(linePictoInfos: passage.LineInfosForPicto, lineName: passage.lineName ?? "Numéro inconnu")
+                
             ForEach(passage.lineDirections) { direction in
                 OneDirectionView(direction: direction)
             }

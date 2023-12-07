@@ -60,20 +60,30 @@ struct LinePictoView: View {
                 )
         default:
             return AnyView(
-                    RoundedRectangle(cornerRadius: 7.5*dividedFactor)
-                        .frame(width: 100*dividedFactor, height: 45*dividedFactor)
-                        .foregroundStyle(Color(hex: linePictoInfos.BGColor ?? "64B5E5"))
-                        .overlay(content: {
-                            Text(lineName)
-                                .font(.custom("IDFVoyageur-Bold", size: 30*dividedFactor))
-                                .padding([.top],6*dividedFactor)
-                                .foregroundStyle(Color(hex: linePictoInfos.FGColor ?? "fff"))
-                        })
-                )
+                HStack {
+                    Text(lineName)
+                        .font(.custom("IDFVoyageur-Bold", size: 30*dividedFactor))
+                        .padding([.top,.horizontal],6*dividedFactor)
+                        .foregroundStyle(Color(hex: linePictoInfos.FGColor ?? "fff"))
+                        .frame(minWidth: 100*dividedFactor)
+                        .background(
+                            RoundedRectangle(cornerRadius: 7.5*dividedFactor)
+                                .foregroundStyle(Color(hex: linePictoInfos.BGColor ?? "64B5E5"))
+                                .frame(
+                                    minWidth: 100*dividedFactor,
+                                    minHeight: 45*dividedFactor,
+                                    idealHeight: 45*dividedFactor,
+                                    maxHeight: 45*dividedFactor
+                                )
+                    )
+                }
+                    .fixedSize()
+                    
+            )
         }
     }
 }
 
 #Preview {
-    LinePictoView(linePictoInfos: LineInfosForPicto(lineMode: "Noctilien", BGColor: nil, FGColor: nil), lineName: "B")
+    LinePictoView(linePictoInfos: LineInfosForPicto(lineMode: "bus", BGColor: nil, FGColor: nil), lineName: "100")
 }
